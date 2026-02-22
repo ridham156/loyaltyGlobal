@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight, Building2, Award, Users, TrendingDown, Microscope, Truck } from "lucide-react";
 import { OUR_STRENGTHS } from "@/data/constants";
@@ -18,6 +18,22 @@ export default function OurStrengths() {
   const ref = useRef(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (!isInView) return;
+    const interval = setInterval(() => {
+      if (isPaused || !carouselRef.current) return;
+      const el = carouselRef.current;
+      const isAtEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 10;
+      if (isAtEnd) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: 340, behavior: "smooth" });
+      }
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isInView, isPaused]);
 
   const scroll = (direction: "left" | "right") => {
     if (carouselRef.current) {
@@ -74,6 +90,8 @@ export default function OurStrengths() {
             ref={carouselRef}
             className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 px-2"
             style={{ scrollSnapType: "x mandatory" }}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
             {OUR_STRENGTHS.map((strength, index) => {
               const IconComponent = iconMap[strength.icon];
