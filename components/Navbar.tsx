@@ -138,7 +138,8 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[55] lg:hidden"
+              className="fixed top-0 left-0 right-0 bg-black/50 backdrop-blur-sm z-[55] lg:hidden"
+              style={{ height: "100dvh" }}
               onClick={() => setIsMobileMenuOpen(false)}
             />
 
@@ -148,7 +149,8 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "tween", duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="fixed top-0 left-0 h-full w-[280px] max-w-[80vw] z-[60] lg:hidden"
+              className="fixed top-0 left-0 w-[280px] max-w-[80vw] z-[60] lg:hidden"
+              style={{ height: "100dvh" }}
             >
               <div className="h-full bg-gradient-to-b from-[#0a1628] via-[#0f4c75] to-[#0a3654] flex flex-col">
                 {/* Drawer Header */}

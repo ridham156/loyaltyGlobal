@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import { Send, CheckCircle, Clock, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -8,6 +9,24 @@ import { SITE_CONFIG, PRODUCT_CATEGORIES } from "@/data/constants";
 
 export default function QuotePage() {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [countdown, setCountdown] = useState(15);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (formStatus !== "success") return;
+    let count = 15;
+    setCountdown(15);
+    const interval = setInterval(() => {
+      count -= 1;
+      setCountdown(count);
+      if (count <= 0) {
+        clearInterval(interval);
+        router.push("/");
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [formStatus, router]);
+
   const [formData, setFormData] = useState({
     fullName: "",
     companyName: "",
@@ -75,6 +94,9 @@ export default function QuotePage() {
               </h2>
               <p className="text-lg text-gray-600 mb-2">
                 Your quotation request has been submitted successfully.
+              </p>
+              <p className="text-sm text-gray-400 mb-2">
+                Redirecting to home in <span className="font-semibold text-[#0f4c75]">{countdown}s</span>...
               </p>
 
               <div className="bg-[#0f4c75]/5 rounded-xl p-6 my-8 text-left">
