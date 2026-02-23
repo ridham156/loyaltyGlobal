@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.loyaltyglobal.co.in"),
+  metadataBase: new URL("https://loyaltyglobal.co.in"),
   title: {
     default: "Loyalty Global - Premium Agricultural Exports from India",
     template: "%s | Loyalty Global",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Loyalty Global is a leading exporter of premium Indian agricultural products including spices, pulses, edible oils, and dehydrated vegetables to markets worldwide. ISO certified, FSSAI approved, exporting to 50+ countries.",
   keywords:
     "Loyalty Global, loyaltyglobal, agricultural exports India, Indian spices exporter, pulses export India, edible oils exporter, dehydrated vegetables, spice export company Ahmedabad Gujarat, food export India, turmeric exporter, cumin seeds export",
-  authors: [{ name: "Loyalty Global", url: "https://www.loyaltyglobal.co.in" }],
+  authors: [{ name: "Loyalty Global", url: "https://loyaltyglobal.co.in" }],
   creator: "Loyalty Global",
   publisher: "Loyalty Global",
   robots: {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://www.loyaltyglobal.co.in",
+    canonical: "https://loyaltyglobal.co.in",
   },
   openGraph: {
     title: "Loyalty Global - Premium Agricultural Exports from India",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "Your trusted partner for premium Indian agricultural exports. Quality products, competitive pricing, and reliable delivery worldwide.",
     type: "website",
     locale: "en_US",
-    url: "https://www.loyaltyglobal.co.in",
+    url: "https://loyaltyglobal.co.in",
     siteName: "Loyalty Global",
     images: [
       {
@@ -69,8 +69,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Loyalty Global",
-  url: "https://www.loyaltyglobal.co.in",
-  logo: "https://www.loyaltyglobal.co.in/assets/images/spices.png",
+  url: "https://loyaltyglobal.co.in",
+  logo: "https://loyaltyglobal.co.in/assets/images/spices.png",
   description:
     "Loyalty Global is a leading exporter of premium Indian agricultural products including spices, pulses, edible oils, and dehydrated vegetables to markets worldwide.",
   address: {
