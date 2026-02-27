@@ -49,7 +49,7 @@ export const HERO_SLIDES = [
 ];
 
 export const WELCOME_CONTENT = {
-  title: "Welcome to Loyalty Global",
+  title: "hello",
   subtitle: "Your Gateway to Premium Indian Agricultural Products",
   description: `Loyalty Global is a leading exporter of premium agricultural products from India to markets worldwide. With over a decade of experience in the export industry, we have established ourselves as a trusted partner for businesses seeking high-quality spices, pulses, oils, and dehydrated vegetables.
 
