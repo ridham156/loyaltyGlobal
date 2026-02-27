@@ -50,7 +50,7 @@ export default function OurProcess() {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-[#f0a500] to-[#ffc107] mx-auto rounded-full" />
           <p className="text-white/80 max-w-2xl mx-auto mt-4 sm:mt-6 text-sm sm:text-base">
-            A streamlined process ensuring quality at every step, from farm to your warehouse.
+            Our streamlined export process ensures consistent quality, full compliance, and reliable on-time delivery worldwide.
           </p>
         </motion.div>
 

@@ -62,8 +62,8 @@ export default function OurStrengths() {
             OUR STRENGTH
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mt-6">
-            Backed by robust infrastructure, certifications, and an expert team to deliver
-            excellence in every shipment.
+            Our strength comes from trusted sourcing, strict quality control, and dependable global trade partnerships.
+    Experienced Team – Strong export knowledge and industry expertise.
           </p>
         </motion.div>
 

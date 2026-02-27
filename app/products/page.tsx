@@ -21,7 +21,7 @@ export default function ProductsPage() {
           <div className="text-center mb-10">
             <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">Our Products</h1>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore our wide range of premium agricultural products. Select a category to view products.
+              Premium agricultural products sourced with care to meet global quality and export standards.
             </p>
           </div>
 

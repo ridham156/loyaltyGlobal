@@ -28,7 +28,7 @@ export default function AboutPage() {
             >
               <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/assets/images/oils.png"
+                  src="/assets/images/about.png"
                   alt="Our Story"
                   fill
                   className="object-cover"
@@ -44,9 +44,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="order-1 lg:order-2"
             >
-              <span className="inline-block text-[#f0a500] font-semibold text-sm uppercase tracking-wider mb-4">
-                Our Journey
-              </span>
+              
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                 Our Story
               </h2>

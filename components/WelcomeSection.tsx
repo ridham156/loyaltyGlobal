@@ -32,7 +32,7 @@ export default function WelcomeSection() {
           >
             <div className="relative h-[400px] lg:h-[550px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/assets/images/spices.png"
+                src="/assets/images/about.png"
                 alt="Premium Indian Agricultural Products"
                 fill
                 className="object-cover"

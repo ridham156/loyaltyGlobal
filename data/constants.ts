@@ -49,13 +49,17 @@ export const HERO_SLIDES = [
 ];
 
 export const WELCOME_CONTENT = {
-  title: "hello",
-  subtitle: "Your Gateway to Premium Indian Agricultural Products",
-  description: `Loyalty Global is a leading exporter of premium agricultural products from India to markets worldwide. With over a decade of experience in the export industry, we have established ourselves as a trusted partner for businesses seeking high-quality spices, pulses, oils, and dehydrated vegetables.
+  title: "Welcome to Loyalty Global",
+  subtitle: "Delivering Premium Indian Agricultural Products to Global Markets",
+  description: `Loyalty Global was founded with a clear purpose — to connect India’s high-quality agricultural and food products with reliable buyers across international markets. Based in Ahmedabad, Gujarat, we operate as an import–export company committed to building long-term trade relationships through transparency, consistent quality, and dependable service.
 
-Our commitment to quality begins at the source. We work directly with farmers across India, ensuring fair trade practices while maintaining the highest standards of product quality. Every product that bears our name undergoes rigorous quality checks and is certified to meet international food safety standards.
+Our founders bring strong business experience closely linked to India’s agricultural supply chain. Recognizing the growing global demand for Indian commodities such as spices, pulses, edible oils, and fresh produce, we established Loyalty Global to represent Indian products responsibly and professionally on the world stage.
 
-Whether you're a distributor, retailer, or manufacturer, we offer flexible packaging solutions and competitive pricing tailored to your needs.`,
+From the very beginning, we have emphasized ethical sourcing, careful supplier selection, and strict quality checks at every stage of the export process. By working closely with farmers, processors, and logistics partners, we ensure that every shipment meets customer expectations as well as international trade standards.
+
+Today, Loyalty Global continues to grow steadily, strengthening partnerships with producers across India and importers worldwide. Our journey is guided by integrity, market knowledge, and a commitment to delivering reliable value to every client we serve.
+
+We believe in more than just trading goods — we build lasting trust across borders.`,
   stats: [
     { value: "10+", label: "Years Experience" },
     { value: "50+", label: "Countries Served" },
@@ -99,32 +103,32 @@ export const WHY_CHOOSE_US = [
   {
     icon: "Shield",
     title: "Quality Assurance",
-    description: "Every product undergoes rigorous quality testing and meets international food safety standards including FSSAI, ISO, and HACCP certifications.",
+    description: "Partnership-Oriented Approach focused on long-term growth.",
   },
   {
     icon: "Globe",
     title: "Global Reach",
-    description: "We export to over 50 countries across 6 continents, with established logistics networks ensuring timely delivery worldwide.",
+    description: "Strict Quality Commitment from sourcing to dispatch.",
   },
   {
     icon: "Leaf",
     title: "Sustainable Sourcing",
-    description: "Direct partnerships with farmers ensure sustainable farming practices and fair trade, supporting local agricultural communities.",
+    description: "Consistent Quality Standards in every shipment.",
   },
   {
     icon: "Package",
     title: "Custom Packaging",
-    description: "Flexible packaging solutions from bulk shipments to retail-ready packs, customized to meet your specific market requirements.",
+    description: "Custom Packaging Options tailored to your market needs.",
   },
   {
     icon: "Clock",
     title: "Timely Delivery",
-    description: "Efficient supply chain management and strategic warehouse locations ensure your orders reach you on schedule, every time.",
+    description: "Reliable & Timely Delivery with secure logistics support.",
   },
   {
     icon: "HeadphonesIcon",
     title: "Dedicated Support",
-    description: "24/7 customer support with dedicated account managers to assist you through every step of your export journey.",
+    description: "Your Reliable Export Partner from India",
   },
 ];
 
@@ -170,34 +174,25 @@ export const OUR_PROCESS = [
 export const OUR_STRENGTHS = [
   {
     title: "State-of-the-Art Infrastructure",
-    description: "Modern processing units equipped with latest technology for quality processing and packaging.",
+    description: "Quality-First Approach – Strict quality control at every stage.",
     icon: "Building2",
   },
   {
     title: "Certified Quality Standards",
-    description: "ISO 22000, FSSAI, HACCP, and Organic certifications ensuring international compliance.",
+    description: "Specialized Product Expertise – Deep focus on selected products for better consistency and compliance.",
     icon: "Award",
   },
   {
     title: "Experienced Team",
-    description: "Industry veterans with decades of combined experience in agricultural exports.",
+    description: "Verified Supplier Network – Trusted farmers and certified suppliers across India.",
     icon: "Users",
   },
   {
     title: "Competitive Pricing",
-    description: "Direct farmer partnerships eliminate middlemen, ensuring best prices for quality products.",
+    description: "Long-Term Business Vision – We build lasting global partnerships, not just transactions.",
     icon: "TrendingDown",
   },
-  {
-    title: "Research & Development",
-    description: "Continuous innovation in processing techniques and product development.",
-    icon: "Microscope",
-  },
-  {
-    title: "Strong Logistics Network",
-    description: "Partnerships with leading shipping lines and freight forwarders worldwide.",
-    icon: "Truck",
-  },
+
 ];
 
 export const BEST_SELLING_PRODUCTS = [
@@ -225,15 +220,20 @@ export const CERTIFICATES = [
 ];
 
 export const ABOUT_CONTENT = {
-  story: `Founded in 2012, Loyalty Global emerged from a simple yet powerful vision: to bridge the gap between India's rich agricultural heritage and global markets hungry for quality products. What started as a small trading firm in Ahmedabad has grown into a respected name in international agricultural exports.
+  story: `Loyalty Global was founded with a clear purpose — to connect India’s high-quality agricultural and food products with reliable buyers across international markets. Based in Ahmedabad, Gujarat, we operate as an import–export company committed to building long-term trade relationships through transparency, consistent quality, and dependable service.
 
-Our journey began when our founders, with deep roots in Gujarat's farming communities, recognized the untapped potential of Indian agricultural products in global markets. They saw farmers struggling to get fair prices for their produce while international buyers sought authentic Indian products.
+  Our founders bring strong business experience closely linked to India’s agricultural supply chain. Recognizing the growing global demand for Indian commodities such as spices, pulses, edible oils, and fresh produce, we established Loyalty Global to represent Indian products responsibly and professionally on the world stage.
 
-Today, we stand as a testament to what passion, integrity, and hard work can achieve. We've built lasting relationships with over 500 farming communities across India and serve clients in more than 50 countries.`,
+From the very beginning, we have emphasized ethical sourcing, careful supplier selection, and strict quality checks at every stage of the export process. By working closely with farmers, processors, and logistics partners, we ensure that every shipment meets customer expectations as well as international trade standards.
 
-  mission: "To be the most trusted bridge between Indian agriculture and global markets, delivering premium quality products while empowering farming communities and creating value for all stakeholders.",
+Today, Loyalty Global continues to grow steadily, strengthening partnerships with producers across India and importers worldwide. Our journey is guided by integrity, market knowledge, and a commitment to delivering reliable value to every client we serve.
 
-  vision: "To make authentic Indian agricultural products accessible to every corner of the world while promoting sustainable farming practices and fair trade.",
+We believe in more than just trading goods — we build lasting trust across borders.
+`,
+
+  mission: "To build trust-driven, long-term partnerships while reliably fulfilling the diverse needs of our customers across global markets.",
+
+  vision: "To become a globally trusted partner by building long-term relationships with customers across international markets.",
 
   values: [
     { title: "Integrity", description: "Honest dealings in every transaction" },

@@ -42,8 +42,8 @@ export default function WhyChooseUs() {
             WHY CHOOSE US
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mt-4 sm:mt-6 text-sm sm:text-base">
-            Partner with Loyalty Global for unmatched quality, reliability, and service in
-            agricultural exports.
+            We focus on quality sourcing, fair pricing, and building long-term business relationships.
+
           </p>
         </motion.div>
 
