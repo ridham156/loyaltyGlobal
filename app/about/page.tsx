@@ -13,6 +13,7 @@ export default function AboutPage() {
   const isStoryInView = useInView(storyRef, { once: true, margin: "-100px" });
   const isMissionInView = useInView(missionRef, { once: true, margin: "-100px" });
 
+  
   return (
     <>
       {/* Our Story Section */}
