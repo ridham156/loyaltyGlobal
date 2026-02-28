@@ -107,9 +107,9 @@ export default function ProductCategories() {
                       <h3 className="text-xl font-bold text-white mb-4">{category.name}</h3>
                       <ul className="space-y-2 mb-4">
                         {category.products.slice(0, 4).map((product) => (
-                          <li key={product} className="text-white/80 text-sm flex items-center gap-2">
+                          <li key={product.name} className="text-white/80 text-sm flex items-center gap-2">
                             <span className="w-1.5 h-1.5 bg-[#f0a500] rounded-full" />
-                            {product}
+                            {product.name}
                           </li>
                         ))}
                         {category.products.length > 4 && (

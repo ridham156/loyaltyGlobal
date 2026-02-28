@@ -101,7 +101,7 @@ export default function ProductsPage() {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6">
                   {selectedCategory.products.map((product, index) => (
                     <motion.div
-                      key={product}
+                      key={product.name}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -110,8 +110,8 @@ export default function ProductsPage() {
                       <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 card-hover">
                         <div className="relative h-[140px] md:h-[160px]">
                           <Image
-                            src={selectedCategory.image}
-                            alt={product}
+                            src={product.image}
+                            alt={product.name}
                             fill
                             className="object-cover transition-transform duration-500 group-hover:scale-110"
                           />
@@ -120,7 +120,7 @@ export default function ProductsPage() {
                         <div className="p-4">
                           <span className="text-xs text-[#0f4c75] font-medium">{selectedCategory.name}</span>
                           <h3 className="font-semibold text-gray-900 mt-1 group-hover:text-[#0f4c75] transition-colors text-sm md:text-base">
-                            {product}
+                            {product.name}
                           </h3>
                         </div>
                       </div>
