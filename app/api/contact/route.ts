@@ -15,14 +15,14 @@ export async function POST(request: NextRequest) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "darshilpatel494@gmail.com",
-        pass: "cqyjpyxersmogrlt",
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
       },
     });
 
     const mailOptions = {
-      from: "darshilpatel494@gmail.com",
-      to: "Info@loyaltyglobal.co.in",
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_TO,
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `
