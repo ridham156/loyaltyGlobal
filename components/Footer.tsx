@@ -80,8 +80,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Your trusted partner for premium Indian agricultural exports. Quality products,
-              competitive pricing, and reliable delivery to markets worldwide.
+              Trusted exporter of premium Indian agricultural products.
+       Quality sourcing, competitive pricing, and reliable worldwide delivery.
             </p>
           </div>
 

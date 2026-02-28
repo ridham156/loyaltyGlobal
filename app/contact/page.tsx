@@ -43,7 +43,7 @@ export default function ContactPage() {
   const contactInfo = [
     { icon: MapPin, title: "Visit Us", lines: [SITE_CONFIG.address] },
     { icon: Phone, title: "Call Us", lines: [SITE_CONFIG.phone, "Mon - Sat: 9:00 AM - 6:00 PM"] },
-    { icon: Mail, title: "Email Us", lines: [SITE_CONFIG.email, "sales@loyaltyglobal.com"] },
+    { icon: Mail, title: "Email Us", lines: [SITE_CONFIG.email, ""] },
   ];
 
   return (
