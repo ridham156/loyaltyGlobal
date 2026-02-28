@@ -39,8 +39,7 @@ export default function ProductCategories() {
             OUR PRODUCTS CATEGORY
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mt-6">
-            From aromatic spices to nutritious pulses, we export a diverse range of premium
-            agricultural products sourced directly from India&apos;s finest farms.
+           Premium agricultural products sourced with care to meet global quality and export standards.
           </p>
         </motion.div>
 
