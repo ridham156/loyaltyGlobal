@@ -11,13 +11,29 @@ export default function ContactPage() {
   const formRef = useRef(null);
   const isInView = useInView(formRef, { once: true, margin: "-100px" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("submitting");
-    setTimeout(() => {
-      setFormStatus("success");
-      setFormData({ name: "", email: "", phone: "", company: "", country: "", subject: "", message: "" });
-    }, 1500);
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        setFormData({ name: "", email: "", phone: "", company: "", country: "", subject: "", message: "" });
+      } else {
+        alert("Failed to send message. Please try again.");
+        setFormStatus("idle");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to send message. Please try again.");
+      setFormStatus("idle");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
