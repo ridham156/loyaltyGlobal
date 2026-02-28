@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+export async function GET() {
+  return NextResponse.json({ message: "Contact API is working" });
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -9,14 +13,14 @@ export async function POST(request: NextRequest) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
+        user: "darshilpatel494@gmail.com",
+        pass: "cqyjpyxersmogrlt",
       },
     });
 
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_TO,
+      from: "darshilpatel494@gmail.com",
+      to: "Info@loyaltyglobal.co.in",
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `
