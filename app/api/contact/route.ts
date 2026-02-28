@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   return NextResponse.json({ message: "Contact API is working" });
 }
