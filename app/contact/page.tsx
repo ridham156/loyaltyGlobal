@@ -43,7 +43,7 @@ export default function ContactPage() {
   const contactInfo = [
     { icon: MapPin, title: "Visit Us", lines: [SITE_CONFIG.address] },
     { icon: Phone, title: "Call Us", lines: [SITE_CONFIG.phone, "Mon - Sat: 9:00 AM - 6:00 PM"] },
-    { icon: Mail, title: "Email Us", lines: [SITE_CONFIG.email, "sales@loyaltyglobal.com"] },
+    { icon: Mail, title: "Email Us", lines: [SITE_CONFIG.email, ""] },
   ];
 
   return (
@@ -96,21 +96,21 @@ export default function ContactPage() {
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-                      <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="John Doe" />
+                      <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="ENTER FULL NAME" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="john@company.com" />
+                      <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="Enter Email id" />
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="+1 234 567 8900" />
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="Enter Mobile No" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
-                      <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="Your Company" />
+                      <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="Company Name" />
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-5">
