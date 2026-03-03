@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: "Loyalty Global",
   tagline: "Your Trusted Partner in Global Agricultural Exports",
-  phone: "+91 98765 43210",
+  phone: "+91 6353342367",
   email: "info@loyaltyglobal.co.in",
   address: "123 Export Hub, GIDC Industrial Area, Ahmedabad, Gujarat 382445, India",
   socialLinks: {
@@ -73,9 +73,11 @@ export const PRODUCT_CATEGORIES = [
     id: "spices",
     name: "Spices & Seasonings",
     image: "/assets/images/spices.png",
-    description: "Premium quality Indian spices including turmeric, cumin, coriander, cardamom, and more.",
+    description: "Sourced from India’s finest farms, our spices offer rich aroma, vibrant color, and authentic flavor worldwide.",
     products: [
       { name: "Turmeric Powder", image: "/assets/images1/AdobeStock_324300514_Preview.jpeg" },
+      { name: "Jaggery", image: "/assets/images1/Jaggery.jpg" },
+      { name: "Sugar", image: "/assets/images1/Sugar.jpg" },
       { name: "Red Chilli Powder", image: "/assets/images1/chatni.jpg" },
       { name: "Ginger", image: "/assets/images1/ginger.avif" },
       { name: "Coriander Powder", image: "/assets/images1/Coriander Powder.avif" },
@@ -90,11 +92,12 @@ export const PRODUCT_CATEGORIES = [
     id: "oils",
     name: "Pulses & Grains",
     image: "/assets/images2/Pulses & Grains.png",
-    description: "Cold-pressed and refined cooking oils meeting international quality standards.",
+    description: "High-quality pulses and grains sourced from trusted Indian farms, ensuring purity, nutrition, and consistent supply worldwide.",
     products: [
       { name: "Black Sesame", image: "/assets/images2/Black Sesame.avif" },
       { name: "Gram Flour", image: "/assets/images2/Gram Flour.avif" },
-      { name: "Sesame", image: "/assets/images2/Sesame.jpg" },
+      { name: "Peanuts", image: "/assets/images2/Peanuts.jpg" },
+      { name: "Sesame", image: "/assets/images2/Sesame.avif" },
       { name: "Wheat", image: "/assets/images2/Wheat.avif" },
       { name: "Whole Chickpeas", image: "/assets/images2/Whole Chickpeas.jpg"},
       { name: "Chana Dal", image: "/assets/images2/Chana Dal.avif"},
@@ -104,12 +107,14 @@ export const PRODUCT_CATEGORIES = [
     id: "pulses",
     name: "Fruits & Vegetables",
     image: "/assets/images3/vegetables.png",
-    description: "High-protein pulses and nutritious grains sourced from premium Indian farms.",
+    description: "High-quality fruits and vegetables, processed hygienically and in compliance with international standards.",
     products: [
       { name: "Onion", image: "/assets/images3/Onion.jpg" },
       { name: "Green Coconut", image: "/assets/images3/Green Coconut.avif" },
       { name: "Pomengranate", image: "/assets/images3/Pomengranate.avif" },
       { name: "Garlic", image: "/assets/images3/Garlic.jpg" },
+      { name: "Drumstick", image: "/assets/images3/Drumstick.jpg" },
+      { name: "Peanuts", image: "/assets/images3/Peanuts.jpg" },
       { name: "Green Chilies", image: "/assets/images3/Green Chilies.jpg" },
       { name: "Banana", image: "/assets/images3/Banana.jpg" },
       { name: "Coconut", image: "/assets/images3/Coconut.jpg" },
@@ -119,12 +124,13 @@ export const PRODUCT_CATEGORIES = [
     id: "vegetables",
     name: "Dried Powder",
     image: "/assets/images/vegetables.png",
-    description: "Advanced dehydration technology preserving taste and nutrition.",
+    description: "Premium dried powders manufactured to meet international quality and safety standards.",
     products: [
       { name: "Moringa powder", image: "/assets/images4/Moringa powder.avif" },
       { name: "Garlic Powder", image: "/assets/images4/Garlic Powder.avif" },
       { name: "Onion Powder", image: "/assets/images4/Onion Powder.jpg" },
       { name: "Isabgol", image: "/assets/images4/Isabgol.avif" },
+       { name: "Banana Powder", image: "/assets/images4/Banana Powder.jpg" },
     ],
   },
 ];
@@ -132,12 +138,12 @@ export const PRODUCT_CATEGORIES = [
 export const WHY_CHOOSE_US = [
   {
     icon: "Shield",
-    title: "Quality Assurance",
+    title: "Long Term Alliance",
     description: "Partnership-Oriented Approach focused on long-term growth.",
   },
   {
     icon: "Globe",
-    title: "Global Reach",
+    title: "Quality Integrity",
     description: "Strict Quality Commitment from sourcing to dispatch.",
   },
   {
@@ -157,7 +163,7 @@ export const WHY_CHOOSE_US = [
   },
   {
     icon: "HeadphonesIcon",
-    title: "Dedicated Support",
+    title: "Trusted Exports",
     description: "Your Reliable Export Partner from India",
   },
 ];
@@ -203,22 +209,22 @@ export const OUR_PROCESS = [
 
 export const OUR_STRENGTHS = [
   {
-    title: "State-of-the-Art Infrastructure",
+    title: "Prime Standards",
     description: "Quality-First Approach – Strict quality control at every stage.",
     icon: "Building2",
   },
   {
-    title: "Certified Quality Standards",
+    title: "Focused Excellence",
     description: "Specialized Product Expertise – Deep focus on selected products for better consistency and compliance.",
     icon: "Award",
   },
   {
-    title: "Experienced Team",
+    title: "Trusted Network",
     description: "Verified Supplier Network – Trusted farmers and certified suppliers across India.",
     icon: "Users",
   },
   {
-    title: "Competitive Pricing",
+    title: "Global Partnerships",
     description: "Long-Term Business Vision – We build lasting global partnerships, not just transactions.",
     icon: "TrendingDown",
   },
@@ -242,11 +248,8 @@ export const BEST_SELLING_PRODUCTS = [
 
 export const CERTIFICATES = [
   { name: "ISO 22000:2018", description: "Food Safety Management System", image: "/assets/images/spices.png" },
-  { name: "FSSAI", description: "Food Safety and Standards Authority of India", image: "/assets/images/oils.png" },
-  { name: "HACCP", description: "Hazard Analysis Critical Control Points", image: "/assets/images/dry products.png" },
-  { name: "Organic Certification", description: "USDA & EU Organic Standards", image: "/assets/images/vegetables.png" },
-  { name: "APEDA Registered", description: "Agricultural and Processed Food Products Export", image: "/assets/images/spices.png" },
-  { name: "Spices Board", description: "Government of India Spices Board Certification", image: "/assets/images/oils.png" },
+  { name: "FSSAI", description: "Udyam Registration Certificate ", image: "/assets/images/Udyam Registration Certificate.jpg" },
+ 
 ];
 
 export const ABOUT_CONTENT = {
