@@ -47,7 +47,10 @@ export default function BestSellingProducts() {
                     src={product.image}
                     alt={product.name}
                     fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    quality={80}
                   />
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-[#0a1628]/30 to-transparent" />

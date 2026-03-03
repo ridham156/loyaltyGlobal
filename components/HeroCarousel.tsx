@@ -85,8 +85,10 @@ export default function HeroCarousel() {
               src={HERO_SLIDES[currentSlide].image}
               alt={HERO_SLIDES[currentSlide].title}
               fill
+              sizes="100vw"
               className="object-cover"
-              priority
+              priority={currentSlide === 0}
+              quality={85}
             />
           </motion.div>
           {/* Overlay */}

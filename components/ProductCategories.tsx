@@ -82,7 +82,10 @@ export default function ProductCategories() {
                       src={category.image}
                       alt={category.name}
                       fill
+                      sizes="(max-width: 768px) 280px, 300px"
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                      quality={80}
                     />
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/90 via-[#0a1628]/40 to-transparent" />

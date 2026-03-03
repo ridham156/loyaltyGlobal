@@ -46,7 +46,10 @@ export default function ProductsPage() {
                     src={category.image}
                     alt={category.name}
                     fill
+                    sizes="(max-width: 1024px) 50vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    priority={index < 2}
+                    quality={85}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/90 via-[#0a1628]/40 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white">
@@ -113,7 +116,10 @@ export default function ProductsPage() {
                             src={product.image}
                             alt={product.name}
                             fill
+                            sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 16vw"
                             className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            loading="lazy"
+                            quality={75}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>

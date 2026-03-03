@@ -44,13 +44,29 @@ export default function QuotePage() {
   const formRef = useRef(null);
   const isInView = useInView(formRef, { once: true, margin: "-50px" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("submitting");
-    setTimeout(() => {
-      setFormStatus("success");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 1500);
+
+    try {
+      const response = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        alert("Failed to send quotation request. Please try again.");
+        setFormStatus("idle");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to send quotation request. Please try again.");
+      setFormStatus("idle");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
