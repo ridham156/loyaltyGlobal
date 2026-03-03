@@ -149,16 +149,39 @@ export default function ContactPage() {
 
             {/* Info Side */}
             <motion.div initial={{ opacity: 0, x: 50 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }} className="space-y-8">
-              {/* Map placeholder */}
-              <div className="bg-[#0f4c75] rounded-2xl p-8 text-white">
-                <h3 className="text-xl font-bold mb-4">Our Office</h3>
-                <div className="aspect-video bg-white/10 rounded-xl flex items-center justify-center mb-6">
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 mx-auto mb-2 text-[#f0a500]" />
-                    <p className="text-white/80 text-sm">Interactive Map</p>
+              {/* Map */}
+              <div className="bg-[#0f4c75] rounded-2xl overflow-hidden text-white">
+                {/* Live Google Map — Sanand Chokdi, Ahmedabad */}
+                <div className="relative w-full h-[260px]">
+                  <iframe
+                    title="Loyalty Global Location — Sanand Chokdi, Ahmedabad"
+                    src="https://www.google.com/maps?q=22.986779,72.497277&z=15&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, display: "block" }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+                <div className="p-5 flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-[#f0a500] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-white text-sm mb-0.5">Our Office</p>
+                    <p className="text-white/75 text-xs leading-relaxed">{SITE_CONFIG.address}</p>
+                    <a
+                      href="https://www.google.com/maps?q=22.986779,72.497277"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 mt-2 text-xs font-medium text-[#f0a500] hover:text-yellow-300 transition-colors"
+                    >
+                      Open in Google Maps
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      </svg>
+                    </a>
                   </div>
                 </div>
-                <p className="text-white/80 text-sm leading-relaxed">{SITE_CONFIG.address}</p>
               </div>
 
               {/* Quick Contact */}

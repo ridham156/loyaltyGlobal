@@ -64,17 +64,51 @@ const selectStyles: StylesConfig<CountryOption, false, GroupBase<CountryOption>>
     borderRadius: "0.75rem",
     borderColor: state.isFocused ? "#0f4c75" : "#e5e7eb",
     boxShadow: state.isFocused ? "0 0 0 2px rgba(15,76,117,0.18)" : "none",
-    padding: "2px 4px",
+    padding: "0 4px",
     minHeight: "48px",
+    height: "48px",
     backgroundColor: "#fff",
     cursor: "pointer",
     "&:hover": { borderColor: state.isFocused ? "#0f4c75" : "#d1d5db" },
     transition: "border-color 0.15s, box-shadow 0.15s",
   }),
-  valueContainer: (base) => ({ ...base, padding: "0 8px", gap: "4px" }),
-  placeholder: (base) => ({ ...base, color: "#9ca3af", fontSize: "14px" }),
-  input: (base) => ({ ...base, color: "#111827", fontSize: "14px", margin: 0, padding: 0 }),
-  singleValue: (base) => ({ ...base, margin: 0, color: "#111827" }),
+  valueContainer: (base) => ({
+    ...base,
+    padding: "0 8px",
+    height: "48px",
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "nowrap",
+  }),
+  placeholder: (base) => ({
+    ...base,
+    color: "#9ca3af",
+    fontSize: "14px",
+    margin: 0,
+    position: "static",
+    transform: "none",
+    display: "flex",
+    alignItems: "center",
+  }),
+  input: (base) => ({
+    ...base,
+    color: "#111827",
+    fontSize: "14px",
+    margin: 0,
+    padding: 0,
+    position: "absolute",
+  }),
+  singleValue: (base) => ({
+    ...base,
+    margin: 0,
+    color: "#111827",
+    position: "static",
+    transform: "none",
+    maxWidth: "100%",
+    display: "flex",
+    alignItems: "center",
+    overflow: "hidden",
+  }),
   indicatorSeparator: () => ({ display: "none" }),
   dropdownIndicator: (base, state) => ({
     ...base,
@@ -155,25 +189,17 @@ export default function CountrySelect({
         value={selected}
         onChange={handleChange}
         placeholder={
-          <span style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span style={{ fontSize: "1.25em" }}>🌐</span>
-            {placeholder}
+          <span style={{ display: "flex", alignItems: "center", gap: "10px", lineHeight: 1 }}>
+            <span style={{ fontSize: "1.25em", lineHeight: 1 }}>🌐</span>
+            <span style={{ fontSize: "14px", color: "#9ca3af" }}>{placeholder}</span>
           </span>
         }
         formatOptionLabel={(option: CountryOption) => (
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", lineHeight: 1 }}>
             <FlagIcon code={option.code} />
-            <span style={{ fontSize: "14px" }}>{option.label}</span>
+            <span style={{ fontSize: "14px", lineHeight: "1.4" }}>{option.label}</span>
           </div>
         )}
-        components={{
-          SingleValue: ({ data }) => (
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <FlagIcon code={data.code} />
-              <span style={{ fontSize: "14px", color: "#111827" }}>{data.label}</span>
-            </div>
-          ),
-        }}
         styles={selectStyles}
         filterOption={(opt, input) =>
           opt.data.label.toLowerCase().includes(input.toLowerCase()) ||
