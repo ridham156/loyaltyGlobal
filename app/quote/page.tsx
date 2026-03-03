@@ -6,6 +6,7 @@ import { motion, useInView } from "framer-motion";
 import { Send, CheckCircle, Clock, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { SITE_CONFIG, PRODUCT_CATEGORIES } from "@/data/constants";
+import CountrySelect from "@/components/CountrySelect";
 
 export default function QuotePage() {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
@@ -69,7 +70,7 @@ export default function QuotePage() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -187,40 +188,29 @@ export default function QuotePage() {
                 <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <label className={labelClass}>Full Name *</label>
-                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required className={inputClass} placeholder="ENTER FULL NAME" />
+                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required className={inputClass} placeholder="John Doe" />
                   </div>
                   <div>
                     <label className={labelClass}>Company Name</label>
-                    <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} className={inputClass} placeholder="Company Name" />
+                    <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} className={inputClass} placeholder="Your company" />
                   </div>
                   <div>
                     <label className={labelClass}>Email Address *</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className={inputClass} placeholder="Enter Email id" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className={inputClass} placeholder="you@company.com" />
                   </div>
                   <div>
                     <label className={labelClass}>Phone Number *</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className={inputClass} placeholder="Enter Mobile No" />
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className={inputClass} placeholder="+1 234 567 8900" />
                   </div>
                   <div className="sm:col-span-2">
                     <label className={labelClass}>Country *</label>
-                    <select name="country" value={formData.country} onChange={handleChange} required className={inputClass}>
-                      <option value="">Select your country</option>
-                      <option value="USA">United States</option>
-                      <option value="UAE">United Arab Emirates</option>
-                      <option value="UK">United Kingdom</option>
-                      <option value="Canada">Canada</option>
-                      <option value="Germany">Germany</option>
-                      <option value="France">France</option>
-                      <option value="Singapore">Singapore</option>
-                      <option value="Malaysia">Malaysia</option>
-                      <option value="Australia">Australia</option>
-                      <option value="Saudi Arabia">Saudi Arabia</option>
-                      <option value="Qatar">Qatar</option>
-                      <option value="Japan">Japan</option>
-                      <option value="South Korea">South Korea</option>
-                      <option value="Netherlands">Netherlands</option>
-                      <option value="Other">Other</option>
-                    </select>
+                    <CountrySelect
+                      name="country"
+                      value={formData.country}
+                      onChange={handleChange}
+                      required
+                      placeholder="Select your country"
+                    />
                   </div>
                 </div>
               </div>
@@ -240,7 +230,7 @@ export default function QuotePage() {
                       {PRODUCT_CATEGORIES.map((cat) => (
                         <option key={cat.id} value={cat.name}>{cat.name}</option>
                       ))}
-                      <option value="Other products">Other Products</option>
+                      <option value="Multiple Categories">Multiple Categories</option>
                     </select>
                   </div>
                   <div>

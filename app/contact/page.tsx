@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { MapPin, Phone, Mail, Send, CheckCircle, MessageSquare } from "lucide-react";
 import { SITE_CONFIG } from "@/data/constants";
+import CountrySelect from "@/components/CountrySelect";
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
@@ -36,14 +37,14 @@ export default function ContactPage() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const contactInfo = [
     { icon: MapPin, title: "Visit Us", lines: [SITE_CONFIG.address] },
     { icon: Phone, title: "Call Us", lines: [SITE_CONFIG.phone, "Mon - Sat: 9:00 AM - 6:00 PM"] },
-    { icon: Mail, title: "Email Us", lines: [SITE_CONFIG.email, ""] },
+    { icon: Mail, title: "Email Us", lines: [SITE_CONFIG.email, "sales@loyaltyglobal.com"] },
   ];
 
   return (
@@ -96,35 +97,32 @@ export default function ContactPage() {
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-                      <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="ENTER FULL NAME" />
+                      <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="John Doe" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="Enter Email id" />
+                      <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="john@company.com" />
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="Enter Mobile No" />
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="+1 234 567 8900" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
-                      <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="Company Name" />
+                      <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all" placeholder="Your Company" />
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Country</label>
-                      <select name="country" value={formData.country} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#0f4c75] focus:ring-2 focus:ring-[#0f4c75]/20 outline-none transition-all bg-white">
-                        <option value="">Select Country</option>
-                        <option value="USA">United States</option>
-                        <option value="UAE">United Arab Emirates</option>
-                        <option value="UK">United Kingdom</option>
-                        <option value="Singapore">Singapore</option>
-                        <option value="Australia">Australia</option>
-                        <option value="Other">Other</option>
-                      </select>
+                      <CountrySelect
+                        name="country"
+                        value={formData.country}
+                        onChange={handleChange}
+                        placeholder="Select Country"
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Subject *</label>

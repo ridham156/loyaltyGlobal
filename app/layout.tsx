@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Loyalty Global",
   },
   description:
-    "Loyalty Global is a trusted exporter of premium Indian agricultural products — spices, pulses, edible oils, and dehydrated vegetables — to buyers in 50+ countries worldwide. ISO 22000, FSSAI & APEDA certified.",
+    "Loyalty Global (loyaltyglobal.co.in) is a trusted exporter of premium Indian agricultural products — spices, pulses, edible oils, and dehydrated vegetables — to buyers in 50+ countries worldwide. ISO 22000, FSSAI & APEDA certified.",
   keywords:
     "Loyalty Global, loyalty global, loyaltyglobal, loyaltyglobal.co.in, agricultural exports India, Indian spices exporter, pulses export India, edible oils exporter India, dehydrated vegetables export, spice export company Ahmedabad Gujarat, food export India, turmeric exporter India, cumin seeds export, Indian food exporter",
   authors: [{ name: "Loyalty Global", url: "https://loyaltyglobal.co.in" }],
@@ -80,7 +80,13 @@ const organizationSchema = {
   "@type": "Organization",
   "@id": "https://loyaltyglobal.co.in/#organization",
   name: "Loyalty Global",
-  alternateName: ["Loyalty Global Exports", "Loyalty Global India"],
+  alternateName: [
+    "loyaltyglobal",
+    "loyaltyglobal.co.in",
+    "Loyalty Global Exports",
+    "Loyalty Global India",
+    "LoyaltyGlobal",
+  ],
   url: "https://loyaltyglobal.co.in",
   logo: {
     "@type": "ImageObject",
@@ -189,10 +195,14 @@ const websiteSchema = {
   "@type": "WebSite",
   "@id": "https://loyaltyglobal.co.in/#website",
   name: "Loyalty Global",
-  alternateName: "Loyalty Global — Agricultural Exports India",
+  alternateName: [
+    "loyaltyglobal",
+    "loyaltyglobal.co.in",
+    "Loyalty Global — Agricultural Exports India",
+  ],
   url: "https://loyaltyglobal.co.in",
   description:
-    "Official website of Loyalty Global — India's trusted agricultural export company.",
+    "Official website of Loyalty Global (loyaltyglobal.co.in) — India's trusted agricultural export company based in Ahmedabad, Gujarat.",
   publisher: {
     "@id": "https://loyaltyglobal.co.in/#organization",
   },

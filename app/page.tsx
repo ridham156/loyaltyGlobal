@@ -7,9 +7,9 @@ import OurProcess from "@/components/OurProcess";
 import OurStrengths from "@/components/OurStrengths";
 
 export const metadata: Metadata = {
-  title: "Loyalty Global — Premium Agricultural Exports from India | Spices, Oils, Pulses",
+  title: "Loyalty Global (loyaltyglobal.co.in) — Premium Agricultural Exports from India",
   description:
-    "Loyalty Global is India's trusted agricultural exporter — premium spices, edible oils, pulses, and dehydrated vegetables shipped to buyers in 50+ countries. ISO 22000, FSSAI & APEDA certified. Get a quote in 24 hours.",
+    "loyaltyglobal.co.in — Loyalty Global is India's trusted agricultural exporter. Premium spices, edible oils, pulses & dehydrated vegetables shipped to 50+ countries. ISO 22000, FSSAI & APEDA certified. Request a quote in 24 hours.",
   alternates: {
     canonical: "https://loyaltyglobal.co.in",
   },
