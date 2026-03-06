@@ -9,6 +9,7 @@ export const SITE_CONFIG = {
     twitter: "https://twitter.com/loyaltyglobal",
     linkedin: "https://linkedin.com/company/loyaltyglobal",
     instagram: "https://instagram.com/loyaltyglobal",
+    whatsapp: "https://wa.me/6353342367",
   },
 };
 

@@ -8,13 +8,27 @@ import {
   Phone,
   Mail,
   Facebook,
-  Twitter,
   Linkedin,
   Instagram,
   ArrowUp,
-  Download
+  Download,
 } from "lucide-react";
 import { NAV_LINKS, SITE_CONFIG, PRODUCT_CATEGORIES } from "@/data/constants";
+
+// WhatsApp SVG — lucide-react does not include this icon
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.64 1.827 6.653L2.667 29.333l6.88-1.8A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16S23.36 2.667 16.003 2.667zm0 24.267a11 11 0 0 1-5.613-1.547l-.4-.24-4.08 1.067 1.093-3.96-.267-.413A10.987 10.987 0 0 1 5.04 16c0-6.04 4.92-10.96 10.96-10.96S26.96 9.96 26.96 16 22.04 26.934 16 26.934zm6.013-8.2c-.333-.167-1.96-.967-2.267-1.08-.306-.107-.52-.16-.747.16-.213.32-.84 1.08-.987 1.28-.16.2-.307.227-.627.08-.333-.16-1.387-.507-2.64-1.627-.973-.867-1.627-1.947-1.827-2.28-.187-.333-.013-.507.147-.667.147-.147.333-.373.493-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.747-1.8-1.013-2.467-.267-.64-.547-.56-.747-.56-.2-.013-.413-.013-.627-.013-.213 0-.56.08-.853.387-.293.307-1.12 1.093-1.12 2.653s1.147 3.08 1.307 3.293c.16.213 2.24 3.44 5.44 4.827.76.333 1.347.52 1.813.667.76.24 1.453.2 2 .12.613-.093 1.88-.773 2.147-1.52.267-.747.267-1.387.187-1.52-.08-.12-.293-.2-.627-.36z" />
+    </svg>
+  );
+}
 
 export default function Footer() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -29,7 +43,6 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Filter out brochure from footer links too
   const filteredLinks = NAV_LINKS.filter((link) => link.href !== "/brochure");
 
   return (
@@ -80,8 +93,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Trusted exporter of premium Indian agricultural products.
-       Quality sourcing, competitive pricing, and reliable worldwide delivery.
+              Trusted exporter of premium Indian agricultural products. Quality sourcing,
+              competitive pricing, and reliable worldwide delivery.
             </p>
           </div>
 
@@ -175,15 +188,18 @@ export default function Footer() {
                 >
                   <Facebook className="w-5 h-5" />
                 </a>
+
+                {/* ✅ WhatsApp — uses inline SVG since lucide-react has no Whatsapp icon */}
                 <a
-                  href={SITE_CONFIG.socialLinks.twitter}
+                  href={SITE_CONFIG.socialLinks.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#0f4c75] transition-colors"
-                  aria-label="Twitter"
+                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#25D366] transition-colors"
+                  aria-label="WhatsApp"
                 >
-                  <Twitter className="w-5 h-5" />
+                  <WhatsAppIcon className="w-5 h-5" />
                 </a>
+
                 <a
                   href={SITE_CONFIG.socialLinks.linkedin}
                   target="_blank"
