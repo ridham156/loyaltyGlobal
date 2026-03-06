@@ -250,7 +250,6 @@ export const BEST_SELLING_PRODUCTS = [
 export const CERTIFICATES = [
   { name: "ISO 22000:2018", description: "Food Safety Management System", image: "/assets/images/spices.png" },
   { name: "FSSAI", description: "Udyam Registration Certificate ", image: "/assets/images/Udyam Registration Certificate.jpg" },
- 
 ];
 
 export const ABOUT_CONTENT = {

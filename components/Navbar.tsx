@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, ChevronRight, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { NAV_LINKS, SITE_CONFIG } from "@/data/constants";
 
 export default function Navbar() {
@@ -74,12 +75,15 @@ export default function Navbar() {
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between">
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#0f4c75] to-[#1b6ca8] rounded-xl flex items-center justify-center shadow-md">
-                  <span className="text-white font-bold text-xl">LG</span>
-                </div>
-                <div className="hidden sm:block">
-                  <h1 className="text-xl font-bold text-[#0f4c75]">Loyalty Global</h1>
+              <Link href="/" className="flex items-center">
+                <div className="relative h-12 w-36 overflow-hidden flex-shrink-0">
+                  <Image
+                    src="/assets/logo.jpeg"
+                    alt="Loyalty Global Logo"
+                    fill
+                    className="object-contain object-left"
+                    priority
+                  />
                 </div>
               </Link>
 
@@ -155,12 +159,15 @@ export default function Navbar() {
               <div className="h-full bg-gradient-to-b from-[#0a1628] via-[#0f4c75] to-[#0a3654] flex flex-col">
                 {/* Drawer Header */}
                 <div className="p-5 pb-3 border-b border-white/10">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#f0a500] to-[#ffc107] rounded-xl flex items-center justify-center shadow-lg">
-                      <span className="text-white font-bold text-base">LG</span>
-                    </div>
-                    <div>
-                      <h2 className="text-base font-bold text-white">Loyalty Global</h2>
+                  <div className="flex items-center">
+                    <div className="relative h-10 w-32 overflow-hidden flex-shrink-0">
+                      <Image
+                        src="/assets/logo.jpeg"
+                        alt="Loyalty Global Logo"
+                        fill
+                        className="object-contain object-left"
+                        priority
+                      />
                     </div>
                   </div>
                 </div>
