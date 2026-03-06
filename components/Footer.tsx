@@ -179,17 +179,18 @@ export default function Footer() {
             <div className="mt-6">
               <p className="text-sm text-gray-500 mb-3">Follow Us</p>
               <div className="flex items-center gap-3">
+                {/* Facebook — brand blue #1877F2 */}
                 <a
                   href={SITE_CONFIG.socialLinks.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#0f4c75] transition-colors"
+                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1877F2] transition-colors"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-5 h-5" />
                 </a>
 
-                {/* ✅ WhatsApp — uses inline SVG since lucide-react has no Whatsapp icon */}
+                {/* WhatsApp — brand green #25D366 */}
                 <a
                   href={SITE_CONFIG.socialLinks.whatsapp}
                   target="_blank"
@@ -200,20 +201,23 @@ export default function Footer() {
                   <WhatsAppIcon className="w-5 h-5" />
                 </a>
 
+                {/* LinkedIn — brand blue #0A66C2 */}
                 <a
                   href={SITE_CONFIG.socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#0f4c75] transition-colors"
+                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#0A66C2] transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
+
+                {/* Instagram — brand pink/magenta #E1306C */}
                 <a
                   href={SITE_CONFIG.socialLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#0f4c75] transition-colors"
+                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#E1306C] transition-colors"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-5 h-5" />
