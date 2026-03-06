@@ -5,10 +5,10 @@ export const SITE_CONFIG = {
   email: "info@loyaltyglobal.co.in",
   address: "123 Export Hub, GIDC Industrial Area, Ahmedabad, Gujarat 382445, India",
   socialLinks: {
-    facebook: "https://facebook.com/loyaltyglobal",
+    facebook: "https://www.facebook.com/profile.php?id=61586603233342",
     twitter: "https://twitter.com/loyaltyglobal",
     linkedin: "https://linkedin.com/company/loyaltyglobal",
-    instagram: "https://instagram.com/loyaltyglobal",
+    instagram: "https://www.instagram.com/loyaltyglobal.co.in/",
     whatsapp: "https://wa.me/6353342367",
   },
 };
@@ -249,7 +249,7 @@ export const BEST_SELLING_PRODUCTS = [
 
 export const CERTIFICATES = [
   { name: "ISO 22000:2018", description: "Food Safety Management System", image: "/assets/images/spices.png" },
-  { name: "FSSAI", description: "Udyam Registration Certificate ", image: "/assets/images/Udyam Registration Certificate.jpg" },
+  { name: "FSSAI", description: "Udyam Registration Certificate ", image: "/assets/images/CERTIFICATE.png" },
  
 ];
 
