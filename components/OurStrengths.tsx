@@ -2,14 +2,14 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { ChevronLeft, ChevronRight, Building2, Award, Users, TrendingDown, Microscope, Truck } from "lucide-react";
+import { ChevronLeft, ChevronRight, Building2, Award, Users, Globe2, Microscope, Truck } from "lucide-react";
 import { OUR_STRENGTHS } from "@/data/constants";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Building2,
   Award,
   Users,
-  TrendingDown,
+  TrendingDown: Globe2,  // Global Partnerships → Globe2 (worldwide connections)
   Microscope,
   Truck,
 };
@@ -55,15 +55,12 @@ export default function OurStrengths() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          {/* <span className="inline-block text-[#f0a500] font-semibold text-sm uppercase tracking-wider mb-4">
-            Our Capabilities
-          </span> */}
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 section-title">
             OUR STRENGTH
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mt-6">
             Our strength comes from trusted sourcing, strict quality control, and dependable global trade partnerships.
-    Experienced Team – Strong export knowledge and industry expertise.
+            Experienced Team – Strong export knowledge and industry expertise.
           </p>
         </motion.div>
 

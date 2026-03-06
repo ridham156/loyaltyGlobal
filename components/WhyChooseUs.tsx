@@ -4,21 +4,28 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
   Shield,
-  Globe,
+  BadgeCheck,
   Leaf,
   Package,
   Clock,
-  Headphones,
+  Handshake,
 } from "lucide-react";
 import { WHY_CHOOSE_US } from "@/data/constants";
 
+// Icon map — each key matches the `icon` field in WHY_CHOOSE_US constants
+// · Shield        → Long Term Alliance   (protection / partnership)
+// · BadgeCheck    → Quality Integrity    (certified / verified quality)
+// · Leaf          → Sustainable Sourcing (eco / nature)
+// · Package       → Custom Packaging     (box / packaging)
+// · Clock         → Timely Delivery      (time / punctuality)
+// · Handshake     → Trusted Exports      (trust / reliable partnership)
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Shield,
-  Globe,
+  Globe: BadgeCheck,          // replaces Globe → Quality Integrity
   Leaf,
   Package,
   Clock,
-  HeadphonesIcon: Headphones,
+  HeadphonesIcon: Handshake,  // replaces Headphones → Trusted Exports
 };
 
 export default function WhyChooseUs() {
@@ -35,19 +42,15 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
-          {/* <span className="inline-block text-[#f0a500] font-semibold text-sm uppercase tracking-wider mb-3 sm:mb-4">
-            Our Advantages
-          </span> */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 section-title">
             WHY CHOOSE US
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mt-4 sm:mt-6 text-sm sm:text-base">
             We focus on quality sourcing, fair pricing, and building long-term business relationships.
-
           </p>
         </motion.div>
 
-        {/* Cards Grid - 2 cols on mobile, 3 cols on desktop */}
+        {/* Cards Grid — 2 cols on mobile, 3 cols on desktop */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
           {WHY_CHOOSE_US.map((item, index) => {
             const IconComponent = iconMap[item.icon];
@@ -75,7 +78,7 @@ export default function WhyChooseUs() {
                     {item.description}
                   </p>
 
-                  {/* Decorative line - hidden on mobile */}
+                  {/* Decorative line — hidden on mobile */}
                   <div className="hidden sm:block mt-4 lg:mt-6 w-12 h-1 bg-gradient-to-r from-[#0f4c75] to-[#f0a500] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </motion.div>
