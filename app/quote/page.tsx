@@ -188,19 +188,19 @@ export default function QuotePage() {
                 <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <label className={labelClass}>Full Name *</label>
-                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required className={inputClass} placeholder="John Doe" />
+                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required className={inputClass} placeholder="ENTER FULL NAME" />
                   </div>
                   <div>
                     <label className={labelClass}>Company Name</label>
-                    <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} className={inputClass} placeholder="Your company" />
+                    <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} className={inputClass} placeholder="Enter Comapny Name" />
                   </div>
                   <div>
                     <label className={labelClass}>Email Address *</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className={inputClass} placeholder="you@company.com" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className={inputClass} placeholder="Enter Email id" />
                   </div>
                   <div>
                     <label className={labelClass}>Phone Number *</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className={inputClass} placeholder="+1 234 567 8900" />
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className={inputClass} placeholder="Enter Phone Number" />
                   </div>
                   <div className="sm:col-span-2">
                     <label className={labelClass}>Country *</label>
@@ -230,7 +230,7 @@ export default function QuotePage() {
                       {PRODUCT_CATEGORIES.map((cat) => (
                         <option key={cat.id} value={cat.name}>{cat.name}</option>
                       ))}
-                      <option value="Multiple Categories">Multiple Categories</option>
+                      <option value="Multiple Categories">Other</option>
                     </select>
                   </div>
                   <div>
