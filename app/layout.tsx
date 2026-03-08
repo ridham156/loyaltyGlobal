@@ -64,6 +64,11 @@ export const metadata: Metadata = {
     site: "@loyaltyglobal",
     creator: "@loyaltyglobal",
   },
+  icons: {
+    icon: "/assets/LOGO.png",
+    shortcut: "/assets/LOGO.png",
+    apple: "/assets/LOGO.png",
+  },
   verification: {
     google: "",
   },
@@ -90,11 +95,11 @@ const organizationSchema = {
   url: "https://loyaltyglobal.co.in",
   logo: {
     "@type": "ImageObject",
-    url: "https://loyaltyglobal.co.in/assets/images/spices.png",
-    width: 1200,
-    height: 630,
+    url: "https://loyaltyglobal.co.in/assets/LOGO.png",
+    width: 512,
+    height: 512,
   },
-  image: "https://loyaltyglobal.co.in/assets/images/spices.png",
+  image: "https://loyaltyglobal.co.in/assets/LOGO.png",
   description:
     "Loyalty Global is a leading exporter of premium Indian agricultural products including spices, pulses, edible oils, and dehydrated vegetables to markets worldwide. ISO 22000 certified, FSSAI approved, APEDA registered.",
   foundingDate: "2014",
@@ -148,7 +153,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": "https://loyaltyglobal.co.in/#localbusiness",
   name: "Loyalty Global",
-  image: "https://loyaltyglobal.co.in/assets/images/spices.png",
+  image: "https://loyaltyglobal.co.in/assets/LOGO.png",
   url: "https://loyaltyglobal.co.in",
   telephone: "+91-98765-43210",
   email: "Info@loyaltyglobal.co.in",
@@ -225,6 +230,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Favicon — overrides favicon.ico for all modern browsers including Chrome */}
+        <link rel="icon" href="/assets/LOGO.png" type="image/png" />
+        <link rel="shortcut icon" href="/assets/LOGO.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/assets/LOGO.png" />
         {/* Preconnect to external image CDNs for faster first load */}
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />

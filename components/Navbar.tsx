@@ -162,7 +162,7 @@ export default function Navbar() {
                   <div className="flex items-center">
                     <div className="relative h-10 w-32 overflow-hidden flex-shrink-0">
                       <Image
-                        src="/assets/logo.jpeg"
+                        src="/assets/LOGO.png"
                         alt="Loyalty Global Logo"
                         fill
                         className="object-contain object-left"

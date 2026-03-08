@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   MapPin,
@@ -84,12 +85,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#0f4c75] to-[#1b6ca8] rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">LG</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white">Loyalty Global</h3>
+            <div className="mb-6">
+              <div className="relative h-12 w-40">
+                <Image
+                  src="/assets/LOGO.png"
+                  alt="Loyalty Global Logo"
+                  fill
+                  className="object-contain object-left"
+                />
               </div>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
