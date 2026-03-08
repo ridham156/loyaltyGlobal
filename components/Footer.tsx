@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   MapPin,
@@ -32,12 +33,18 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 export default function Footer() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 500);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleDownload = () => {
+    setIsDownloading(true);
+    setTimeout(() => setIsDownloading(false), 3000);
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -61,12 +68,25 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-3 flex-shrink-0">
               <a
-                href="/brochure.pdf"
+                href="/assets/brochure.pdf"
                 download
-                className="bg-white/10 border border-white/20 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-full font-semibold text-sm md:text-base hover:bg-white/20 transition-all duration-300 whitespace-nowrap flex items-center gap-2"
+                onClick={handleDownload}
+                className="bg-white/10 border border-white/20 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-full font-semibold text-sm md:text-base hover:bg-white/20 transition-all duration-300 whitespace-nowrap flex items-center gap-2 disabled:opacity-70"
               >
-                <Download className="w-4 h-4 md:w-5 md:h-5" />
-                Download Brochure
+                {isDownloading ? (
+                  <>
+                    <svg className="w-4 h-4 md:w-5 md:h-5 animate-spin" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Downloading...
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-4 h-4 md:w-5 md:h-5" />
+                    Download Brochure
+                  </>
+                )}
               </a>
               <Link
                 href="/quote"
@@ -84,12 +104,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#0f4c75] to-[#1b6ca8] rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">LG</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white">Loyalty Global</h3>
+            <div className="mb-6">
+              <div className="relative h-12 w-40">
+                <Image
+                  src="/assets/logo.png"
+                  alt="Loyalty Global logo"
+                  fill
+                  className="object-contain object-left"
+                />
               </div>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">

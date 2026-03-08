@@ -66,7 +66,7 @@ export default function CertificatePage() {
                     src={cert.image}
                     alt={cert.name}
                     fill
-                    className="object-contain transition-all duration-500 blur-[0px] group-hover:blur-0"
+                    className="object-contain transition-all duration-500 blur-[2px] group-hover:blur-2"
                   />
                 </div>
 

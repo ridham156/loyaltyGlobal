@@ -128,7 +128,7 @@ export const PRODUCT_CATEGORIES = [
     image: "/assets/images/dary.jpg",
     description: "Premium dried powders manufactured to meet international quality and safety standards.",
     products: [
-      { name: "Moringa powder", image: "/assets/images4/Moringa powder.avif" },
+      { name: "Moringa powder", image: "/assets/images4/Moringa Powder.avif" },
       { name: "Garlic Powder", image: "/assets/images4/Garlic Powder.avif" },
       { name: "Onion Powder", image: "/assets/images4/Onion Powder.jpg" },
       { name: "Isabgol", image: "/assets/images4/Isabgol.avif" },
