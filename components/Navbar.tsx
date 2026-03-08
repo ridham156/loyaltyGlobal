@@ -68,8 +68,8 @@ export default function Navbar() {
         <nav
           className={`transition-all duration-500 ${
             isScrolled
-              ? "bg-white/95 backdrop-blur-xl shadow-sm py-2"
-              : "bg-white/90 backdrop-blur-xl py-4"
+              ? "bg-gradient-to-r from-sky-50/95 via-white/95 to-sky-50/95 backdrop-blur-xl shadow-[0_4px_24px_rgba(14,165,233,0.15)] border-b border-sky-200/50 py-2"
+              : "bg-gradient-to-r from-sky-50/90 via-white/85 to-sky-50/90 backdrop-blur-xl border-b border-sky-100/40 py-4"
           }`}
         >
           <div className="container mx-auto px-4">
