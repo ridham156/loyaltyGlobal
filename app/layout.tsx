@@ -64,11 +64,6 @@ export const metadata: Metadata = {
     site: "@loyaltyglobal",
     creator: "@loyaltyglobal",
   },
-  icons: {
-    icon: "/assets/LOGO.png",
-    shortcut: "/assets/LOGO.png",
-    apple: "/assets/LOGO.png",
-  },
   verification: {
     google: "",
   },
@@ -230,10 +225,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Favicon — overrides favicon.ico for all modern browsers including Chrome */}
-        <link rel="icon" href="/assets/LOGO.png" type="image/png" />
-        <link rel="shortcut icon" href="/assets/LOGO.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/assets/LOGO.png" />
         {/* Preconnect to external image CDNs for faster first load */}
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
