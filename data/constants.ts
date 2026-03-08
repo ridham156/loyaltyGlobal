@@ -42,7 +42,7 @@ export const HERO_SLIDES = [
     description: "High-quality fruits and vegetables, processed hygienically and in compliance with international standards.",
   },
   {
-    image: "/assets/images/vegetables.png",
+    image: "/assets/images/dary.jpg",
     title: "Dried Powder",
     subtitle: "Farm Fresh, Long Lasting",
     description: "Premium dried powders manufactured to meet international quality and safety standards.",
@@ -98,6 +98,7 @@ export const PRODUCT_CATEGORIES = [
       { name: "Black Sesame", image: "/assets/images2/Black Sesame.avif" },
       { name: "Gram Flour", image: "/assets/images2/Gram Flour.avif" },
       { name: "Peanuts", image: "/assets/images2/Peanuts.jpg" },
+      { name: "Rice", image: "/assets/images2/rice.jpg" },
       { name: "Sesame", image: "/assets/images2/Sesame.avif" },
       { name: "Wheat", image: "/assets/images2/Wheat.avif" },
       { name: "Whole Chickpeas", image: "/assets/images2/Whole Chickpeas.jpg"},
@@ -124,7 +125,7 @@ export const PRODUCT_CATEGORIES = [
   {
     id: "vegetables",
     name: "Dried Powder",
-    image: "/assets/images/vegetables.png",
+    image: "/assets/images/dary.jpg",
     description: "Premium dried powders manufactured to meet international quality and safety standards.",
     products: [
       { name: "Moringa powder", image: "/assets/images4/Moringa powder.avif" },
