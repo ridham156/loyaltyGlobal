@@ -7,7 +7,7 @@ export const contentType = "image/png";
 
 export default async function Icon() {
   const logoData = await readFile(
-    join(process.cwd(), "public", "assets", "LOGO.png")
+    join(process.cwd(), "public", "assets", "logo.png")
   );
   const dataUrl = `data:image/png;base64,${logoData.toString("base64")}`;
 

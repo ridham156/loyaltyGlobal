@@ -88,8 +88,8 @@ export default function Footer() {
             <div className="mb-6">
               <div className="relative h-12 w-40">
                 <Image
-                  src="/assets/LOGO.png"
-                  alt="Loyalty Global Logo"
+                  src="/assets/logo.png"
+                  alt="Loyalty Global logo"
                   fill
                   className="object-contain object-left"
                 />

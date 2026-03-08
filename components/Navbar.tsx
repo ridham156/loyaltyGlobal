@@ -78,8 +78,8 @@ export default function Navbar() {
               <Link href="/" className="flex items-center">
                 <div className="relative h-12 w-36 overflow-hidden flex-shrink-0">
                   <Image
-                    src="/assets/LOGO.png"
-                    alt="Loyalty Global Logo"
+                    src="/assets/logo.png"
+                    alt="Loyalty Global logo"
                     fill
                     className="object-contain object-left"
                     priority
@@ -162,8 +162,8 @@ export default function Navbar() {
                   <div className="flex items-center">
                     <div className="relative h-10 w-32 overflow-hidden flex-shrink-0">
                       <Image
-                        src="/assets/LOGO.png"
-                        alt="Loyalty Global Logo"
+                        src="/assets/logo.png"
+                        alt="Loyalty Global logo"
                         fill
                         className="object-contain object-left"
                         priority
