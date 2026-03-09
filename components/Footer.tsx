@@ -68,7 +68,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-3 flex-shrink-0">
               <a
-                href="/assets/brochure.pdf"
+                href="/assets/Brochure.pdf"
                 download
                 onClick={handleDownload}
                 className="bg-white/10 border border-white/20 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-full font-semibold text-sm md:text-base hover:bg-white/20 transition-all duration-300 whitespace-nowrap flex items-center gap-2 disabled:opacity-70"

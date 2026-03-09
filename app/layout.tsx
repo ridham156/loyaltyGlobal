@@ -164,8 +164,8 @@ const localBusinessSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: "22.986779",
-    longitude: "72.497277",
+    latitude: "22.988349069492457",
+    longitude: "72.46275440240133",
   },
   openingHoursSpecification: [
     {

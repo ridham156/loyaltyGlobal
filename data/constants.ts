@@ -3,7 +3,7 @@ export const SITE_CONFIG = {
   tagline: "Your Trusted Partner in Global Agricultural Exports",
   phone: "+91 6353342367",
   email: "info@loyaltyglobal.co.in",
-  address: "123 Export Hub, GIDC Industrial Area, Ahmedabad, Gujarat 382445, India",
+  address: "Satyesh Residency, Sarkhej - Sanand Rd, Shela, Ahmedabad, Gujarat 382210, India",
   socialLinks: {
     facebook: "https://www.facebook.com/profile.php?id=61586603233342",
     twitter: "https://twitter.com/loyaltyglobal",
@@ -249,8 +249,7 @@ export const BEST_SELLING_PRODUCTS = [
 ];
 
 export const CERTIFICATES = [
-  { name: "ISO 22000:2018", description: "Food Safety Management System", image: "/assets/images/spices.png" },
-  { name: "FSSAI", description: "Udyam Registration Certificate ", image: "/assets/images/CERTIFICATE.png" },
+  { name: "GST", description: "Goods and Services Tax", image: "/assets/images/CERTIFICATE.png" },
  
 ];
 

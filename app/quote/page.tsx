@@ -268,7 +268,7 @@ export default function QuotePage() {
                       onChange={handleChange}
                       rows={3}
                       className={`${inputClass} resize-none`}
-                      placeholder="Any specific requirements — delivery location, certifications needed, timeline, etc."
+                      placeholder="Any specific requirements ....."
                     />
                   </div>
                 </div>

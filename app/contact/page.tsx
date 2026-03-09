@@ -155,7 +155,7 @@ export default function ContactPage() {
                 <div className="relative w-full h-[260px]">
                   <iframe
                     title="Loyalty Global Location — Sanand Chokdi, Ahmedabad"
-                    src="https://www.google.com/maps?q=22.986779,72.497277&z=15&output=embed"
+                    src="https://www.google.com/maps?q=22.988349069492457, 72.46275440240133&z=15&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0, display: "block" }}
@@ -170,7 +170,7 @@ export default function ContactPage() {
                     <p className="font-semibold text-white text-sm mb-0.5">Our Office</p>
                     <p className="text-white/75 text-xs leading-relaxed">{SITE_CONFIG.address}</p>
                     <a
-                      href="https://www.google.com/maps?q=22.986779,72.497277"
+                      href="https://www.google.com/maps?q=22.988349069492457, 72.46275440240133"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 mt-2 text-xs font-medium text-[#f0a500] hover:text-yellow-300 transition-colors"
