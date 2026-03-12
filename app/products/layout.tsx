@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Browse Loyalty Global's full range of export-quality Indian agricultural products — spices & seasonings, edible oils, pulses & grains, and dehydrated vegetables. ISO certified, FSSAI approved.",
   keywords:
-    "Loyalty Global products, Indian spices export, turmeric export, cumin seeds, groundnut oil export, chickpeas export, dehydrated vegetables India, pulses export India",
+    "Loyalty Global products, Indian spices export, turmeric powder exporter India, cumin seeds export, coriander powder export, red chilli powder exporter, cardamom exporter India, groundnut oil exporter, sesame oil export India, chickpeas exporter India, chana dal export, wheat exporter India, rice exporter India, black sesame export, dehydrated vegetables India, moringa powder exporter, onion powder exporter, garlic powder exporter India, banana powder export, pulses export India, grains export India, agricultural commodities India, jaggery exporter India, fennel seeds exporter",
   alternates: {
     canonical: "https://loyaltyglobal.co.in/products",
   },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/images/spices.png",
+        url: "https://loyaltyglobal.co.in/assets/images/spices.png",
         width: 1200,
         height: 630,
         alt: "Loyalty Global Product Range",

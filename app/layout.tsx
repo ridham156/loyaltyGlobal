@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -10,6 +10,12 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#0f4c75",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://loyaltyglobal.co.in"),
   title: {
@@ -19,7 +25,7 @@ export const metadata: Metadata = {
   description:
     "Loyalty Global (loyaltyglobal.co.in) is a trusted exporter of premium Indian agricultural products — spices, pulses, edible oils, and dehydrated vegetables — to buyers in 50+ countries worldwide. ISO 22000, FSSAI & APEDA certified.",
   keywords:
-    "Loyalty Global, loyalty global, loyaltyglobal, loyaltyglobal.co.in, agricultural exports India, Indian spices exporter, pulses export India, edible oils exporter India, dehydrated vegetables export, spice export company Ahmedabad Gujarat, food export India, turmeric exporter India, cumin seeds export, Indian food exporter",
+    "Loyalty Global, loyalty global, loyaltyglobal, loyaltyglobal.co.in, agricultural exports India, Indian spices exporter, pulses export India, edible oils exporter India, dehydrated vegetables export, spice export company Ahmedabad Gujarat, food export India, turmeric exporter India, cumin seeds export, Indian food exporter, bulk spices supplier India, wholesale agricultural products India, APEDA registered exporter, FSSAI certified food exporter, best food exporter Gujarat, Indian dry fruits exporter, sesame seeds exporter, groundnut oil exporter India",
   authors: [{ name: "Loyalty Global", url: "https://loyaltyglobal.co.in" }],
   creator: "Loyalty Global",
   publisher: "Loyalty Global",
@@ -105,32 +111,32 @@ const organizationSchema = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "GIDC Industrial Area",
+    streetAddress: "Satyesh Residency, Sarkhej - Sanand Rd, Shela",
     addressLocality: "Ahmedabad",
     addressRegion: "Gujarat",
-    postalCode: "382445",
+    postalCode: "382210",
     addressCountry: "IN",
   },
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+91-98765-43210",
+      telephone: "+91-6353342367",
       contactType: "customer service",
       areaServed: "Worldwide",
       availableLanguage: ["English", "Hindi", "Gujarati"],
     },
     {
       "@type": "ContactPoint",
-      email: "Info@loyaltyglobal.co.in",
+      email: "info@loyaltyglobal.co.in",
       contactType: "sales",
       areaServed: "Worldwide",
     },
   ],
   sameAs: [
-    "https://www.facebook.com/loyaltyglobal",
+    "https://www.facebook.com/profile.php?id=61586603233342",
     "https://twitter.com/loyaltyglobal",
-    "https://www.linkedin.com/company/loyaltyglobal",
-    "https://www.instagram.com/loyaltyglobal",
+    "https://linkedin.com/company/loyaltyglobal",
+    "https://www.instagram.com/loyaltyglobal.co.in/",
   ],
   knowsAbout: [
     "Agricultural Exports",
@@ -150,16 +156,16 @@ const localBusinessSchema = {
   name: "Loyalty Global",
   image: "https://loyaltyglobal.co.in/assets/logo.png",
   url: "https://loyaltyglobal.co.in",
-  telephone: "+91-98765-43210",
-  email: "Info@loyaltyglobal.co.in",
+  telephone: "+91-6353342367",
+  email: "info@loyaltyglobal.co.in",
   description:
     "Loyalty Global is Ahmedabad's trusted exporter of premium Indian spices, pulses, edible oils, and dehydrated vegetables. Serving importers in 50+ countries.",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "GIDC Industrial Area",
+    streetAddress: "Satyesh Residency, Sarkhej - Sanand Rd, Shela",
     addressLocality: "Ahmedabad",
     addressRegion: "Gujarat",
-    postalCode: "382445",
+    postalCode: "382210",
     addressCountry: "IN",
   },
   geo: {
@@ -228,6 +234,13 @@ export default function RootLayout({
         {/* Preconnect to external image CDNs for faster first load */}
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        {/* Preload above-the-fold hero image for LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/images/spices.png"
+          fetchPriority="high"
+        />
         {/* Structured Data — Organization */}
         <script
           type="application/ld+json"

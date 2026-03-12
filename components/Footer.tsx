@@ -110,6 +110,7 @@ export default function Footer() {
                   src="/assets/logo.png"
                   alt="Loyalty Global logo"
                   fill
+                  sizes="160px"
                   className="object-contain object-left"
                 />
               </div>

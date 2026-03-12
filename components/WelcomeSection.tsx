@@ -33,8 +33,9 @@ export default function WelcomeSection() {
             <div className="relative h-[400px] lg:h-[550px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/assets/images/about.png"
-                alt="Premium Indian Agricultural Products"
+                alt="Premium Indian Agricultural Products — Loyalty Global"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
               {/* Overlay pattern */}

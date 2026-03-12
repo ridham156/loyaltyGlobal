@@ -29,8 +29,9 @@ export default function AboutPage() {
               <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/assets/images/about.png"
-                  alt="Our Story"
+                  alt="Loyalty Global — Our Story, Ahmedabad Agricultural Exporter"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>

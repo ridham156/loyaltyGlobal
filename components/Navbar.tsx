@@ -81,6 +81,7 @@ export default function Navbar() {
                     src="/assets/logo.png"
                     alt="Loyalty Global logo"
                     fill
+                    sizes="144px"
                     className="object-contain object-left"
                     priority
                   />
@@ -165,8 +166,8 @@ export default function Navbar() {
                         src="/assets/logo.png"
                         alt="Loyalty Global logo"
                         fill
+                        sizes="128px"
                         className="object-contain object-left"
-                        priority
                       />
                     </div>
                   </div>
