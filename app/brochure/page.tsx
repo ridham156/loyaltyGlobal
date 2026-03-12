@@ -10,8 +10,8 @@ import { PRODUCT_CATEGORIES } from "@/data/constants";
 
 const brochures = [
   { title: "Company Profile", description: "Complete overview of Loyalty Global, our capabilities, and services", icon: BookOpen, size: "2.5 MB", format: "PDF", image: "/assets/images/spices.png" },
-  { title: "Product Catalog", description: "Comprehensive catalog of all our agricultural products with specifications", icon: FileText, size: "5.2 MB", format: "PDF", image: "/assets/images/oils.png" },
-  { title: "Export Guidelines", description: "Documentation requirements and export process information", icon: Presentation, size: "1.8 MB", format: "PDF", image: "/assets/images/dry products.png" },
+  { title: "Product Catalog", description: "Comprehensive catalog of all our agricultural products with specifications", icon: FileText, size: "5.2 MB", format: "PDF", image: "/assets/images/about.png" },
+  { title: "Export Guidelines", description: "Documentation requirements and export process information", icon: Presentation, size: "1.8 MB", format: "PDF", image: "/assets/images/dary.jpg" },
   { title: "Quality Standards", description: "Our quality control processes and certification details", icon: FileText, size: "1.2 MB", format: "PDF", image: "/assets/images/vegetables.png" },
 ];
 
@@ -41,7 +41,7 @@ export default function BrochurePage() {
               <motion.div key={brochure.title} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group">
                 <div className="flex flex-col sm:flex-row">
                   <div className="relative w-full sm:w-48 h-48 sm:h-auto flex-shrink-0">
-                    <Image src={brochure.image} alt={brochure.title} fill className="object-cover" />
+                    <Image src={brochure.image} alt={brochure.title} fill sizes="192px" className="object-cover" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/50 sm:from-transparent sm:to-white" />
                   </div>
                   <div className="p-6 flex-1">
@@ -83,7 +83,7 @@ export default function BrochurePage() {
             {PRODUCT_CATEGORIES.map((category, index) => (
               <motion.div key={category.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group">
                 <div className="relative h-40">
-                  <Image src={category.image} alt={category.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src={category.image} alt={category.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 to-transparent" />
                   <div className="absolute bottom-4 left-4">
                     <h3 className="text-white font-bold">{category.name}</h3>

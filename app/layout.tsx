@@ -234,13 +234,6 @@ export default function RootLayout({
         {/* Preconnect to external image CDNs for faster first load */}
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        {/* Preload above-the-fold hero image for LCP */}
-        <link
-          rel="preload"
-          as="image"
-          href="/assets/images/spices.png"
-          fetchPriority="high"
-        />
         {/* Structured Data — Organization */}
         <script
           type="application/ld+json"

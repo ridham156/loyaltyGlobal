@@ -1,10 +1,24 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import HeroCarousel from "@/components/HeroCarousel";
-import WelcomeSection from "@/components/WelcomeSection";
-import ProductCategories from "@/components/ProductCategories";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import OurProcess from "@/components/OurProcess";
-import OurStrengths from "@/components/OurStrengths";
+
+// Below-fold components — dynamically imported so they are code-split into
+// separate JS chunks and don't block the initial page load.
+const WelcomeSection = dynamic(() => import("@/components/WelcomeSection"), {
+  loading: () => <div className="h-[500px] bg-white" />,
+});
+const ProductCategories = dynamic(() => import("@/components/ProductCategories"), {
+  loading: () => <div className="h-[600px] bg-[#f8fafc]" />,
+});
+const WhyChooseUs = dynamic(() => import("@/components/WhyChooseUs"), {
+  loading: () => <div className="h-[400px] bg-white" />,
+});
+const OurProcess = dynamic(() => import("@/components/OurProcess"), {
+  loading: () => <div className="h-[400px] bg-[#0f4c75]" />,
+});
+const OurStrengths = dynamic(() => import("@/components/OurStrengths"), {
+  loading: () => <div className="h-[400px] bg-[#f8fafc]" />,
+});
 
 export const metadata: Metadata = {
   title: "Loyalty Global (loyaltyglobal.co.in) — Premium Agricultural Exports from India",

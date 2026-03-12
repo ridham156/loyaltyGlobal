@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   experimental: {
-    optimizePackageImports: ["framer-motion", "lucide-react"],
+    optimizePackageImports: ["framer-motion", "lucide-react", "react-select", "react-country-flag"],
   },
   async headers() {
     return [

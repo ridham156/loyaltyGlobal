@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   MapPin,
   Phone,
@@ -270,24 +269,19 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Scroll to Top */}
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 w-12 h-12 bg-[#0f4c75] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#1b6ca8] hover:shadow-xl transition-all duration-300 z-40"
-            initial={{ opacity: 0, scale: 0, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0, y: 16 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            aria-label="Scroll to top"
-          >
-            <ArrowUp className="w-5 h-5" />
-          </motion.button>
-        )}
-      </AnimatePresence>
+      {/* Scroll to Top — CSS only */}
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-8 right-8 w-12 h-12 bg-[#0f4c75] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#1b6ca8] hover:scale-110 active:scale-90 hover:shadow-xl transition-all duration-300 z-40"
+        style={{
+          opacity: showScrollTop ? 1 : 0,
+          transform: showScrollTop ? "scale(1) translateY(0)" : "scale(0) translateY(16px)",
+          pointerEvents: showScrollTop ? "auto" : "none",
+        }}
+        aria-label="Scroll to top"
+      >
+        <ArrowUp className="w-5 h-5" />
+      </button>
     </footer>
   );
 }
