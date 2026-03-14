@@ -1,14 +1,21 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import { CERTIFICATES } from "@/data/constants";
 
 export default function CertificatePage() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { rootMargin: "-100px" });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section ref={ref} className="py-20 lg:py-28 bg-[#f8fafc] relative overflow-hidden">
@@ -20,11 +27,9 @@ export default function CertificatePage() {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-16"
+          style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: "all 0.6s ease" }}
         >
           <div className="inline-flex items-center gap-2 bg-[#0f4c75]/10 text-[#0f4c75] text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-5">
             <ShieldCheck className="w-4 h-4" />
@@ -37,9 +42,9 @@ export default function CertificatePage() {
             Our commitment to quality is backed by internationally recognized certifications
             and government-approved registrations.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Cards — layout adapts to count: 1 → centred wide, 2 → side-by-side, 3+ → grid */}
+        {/* Cards */}
         <div
           className={`grid gap-10 justify-items-center ${
             CERTIFICATES.length === 1
@@ -50,16 +55,14 @@ export default function CertificatePage() {
           }`}
         >
           {CERTIFICATES.map((cert, index) => (
-            <motion.div
+            <div
               key={cert.name}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, delay: index * 0.15 }}
               className="group w-full"
+              style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(40px)", transition: `all 0.55s ease ${index * 0.15}s` }}
             >
               <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-[#0f4c75]/20 hover:-translate-y-2">
 
-                {/* Portrait Certificate Image — blur on the image itself */}
+                {/* Portrait Certificate Image */}
                 <div className="relative mx-5 mt-5 mb-1 rounded-xl overflow-hidden bg-gray-100"
                      style={{ aspectRatio: "3/4" }}>
                   <Image
@@ -85,7 +88,7 @@ export default function CertificatePage() {
                 {/* Bottom accent */}
                 <div className="absolute bottom-0 left-5 right-5 h-px bg-gradient-to-r from-transparent via-[#0f4c75]/20 to-transparent" />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

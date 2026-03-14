@@ -1,15 +1,12 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Package, X } from "lucide-react";
 import { PRODUCT_CATEGORIES } from "@/data/constants";
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const productsRef = useRef(null);
-  const isInView = useInView(productsRef, { once: true, margin: "-100px" });
 
   const selectedCategory = PRODUCT_CATEGORIES.find((c) => c.id === activeCategory);
 
@@ -27,15 +24,13 @@ export default function ProductsPage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {PRODUCT_CATEGORIES.map((category, index) => (
-              <motion.div
+              <div
                 key={category.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() =>
                   setActiveCategory(activeCategory === category.id ? null : category.id)
                 }
                 className="cursor-pointer group"
+                style={{ opacity: 1, transform: "none", animation: `fadeInUp 0.5s ease ${index * 0.1}s both` }}
               >
                 <div className={`relative h-[200px] md:h-[250px] rounded-2xl overflow-hidden shadow-lg transition-all duration-300 ${
                   activeCategory === category.id
@@ -62,82 +57,74 @@ export default function ProductsPage() {
                     </div>
                   )}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Products List - only shown when category is selected */}
-      <AnimatePresence>
-        {activeCategory && selectedCategory && (
-          <motion.section
-            ref={productsRef}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4 }}
-            className="bg-[#f8fafc] overflow-hidden"
-          >
-            <div className="py-16">
-              <div className="container mx-auto px-4">
-                {/* Section Header */}
-                <div className="flex items-center justify-between mb-8">
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-900">
-                      {selectedCategory.name}
-                    </h2>
-                    <p className="text-gray-600 text-sm mt-1">
-                      {selectedCategory.products.length} products available
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => setActiveCategory(null)}
-                    className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 bg-white px-4 py-2 rounded-full shadow-sm hover:shadow transition-all"
-                  >
-                    <X className="w-4 h-4" />
-                    Clear
-                  </button>
+      {activeCategory && selectedCategory && (
+        <section
+          className="bg-[#f8fafc] overflow-hidden"
+          style={{ animation: "fadeInUp 0.4s ease both" }}
+        >
+          <div className="py-16">
+            <div className="container mx-auto px-4">
+              {/* Section Header */}
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    {selectedCategory.name}
+                  </h2>
+                  <p className="text-gray-600 text-sm mt-1">
+                    {selectedCategory.products.length} products available
+                  </p>
                 </div>
+                <button
+                  onClick={() => setActiveCategory(null)}
+                  className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 bg-white px-4 py-2 rounded-full shadow-sm hover:shadow transition-all"
+                >
+                  <X className="w-4 h-4" />
+                  Clear
+                </button>
+              </div>
 
-                {/* Products Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6">
-                  {selectedCategory.products.map((product, index) => (
-                    <motion.div
-                      key={product.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.05 }}
-                      className="group"
-                    >
-                      <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 card-hover">
-                        <div className="relative h-[140px] md:h-[160px]">
-                          <Image
-                            src={product.image}
-                            alt={product.name}
-                            fill
-                            sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 16vw"
-                            className="object-cover transition-transform duration-500 group-hover:scale-110"
-                            loading="lazy"
-                            quality={75}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </div>
-                        <div className="p-4">
-                          <span className="text-xs text-[#0f4c75] font-medium">{selectedCategory.name}</span>
-                          <h3 className="font-semibold text-gray-900 mt-1 group-hover:text-[#0f4c75] transition-colors text-sm md:text-base">
-                            {product.name}
-                          </h3>
-                        </div>
+              {/* Products Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6">
+                {selectedCategory.products.map((product, index) => (
+                  <div
+                    key={product.name}
+                    className="group"
+                    style={{ animation: `fadeInUp 0.4s ease ${index * 0.05}s both` }}
+                  >
+                    <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 card-hover">
+                      <div className="relative h-[140px] md:h-[160px]">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 16vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          loading="lazy"
+                          quality={75}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       </div>
-                    </motion.div>
-                  ))}
-                </div>
+                      <div className="p-4">
+                        <span className="text-xs text-[#0f4c75] font-medium">{selectedCategory.name}</span>
+                        <h3 className="font-semibold text-gray-900 mt-1 group-hover:text-[#0f4c75] transition-colors text-sm md:text-base">
+                          {product.name}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </motion.section>
-        )}
-      </AnimatePresence>
+          </div>
+        </section>
+      )}
 
       {/* Empty State - when no category selected */}
       {!activeCategory && (

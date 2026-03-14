@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 
@@ -11,6 +11,16 @@ interface PageHeaderProps {
 }
 
 export default function PageHeader({ title, subtitle, breadcrumbs }: PageHeaderProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { rootMargin: "-50px" });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <section className="relative bg-gradient-to-br from-[#0f4c75] to-[#0a3654] py-20 lg:py-28 overflow-hidden">
       {/* Background Pattern */}
@@ -24,11 +34,10 @@ export default function PageHeader({ title, subtitle, breadcrumbs }: PageHeaderP
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div
+          ref={ref}
           className="text-center"
+          style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: "all 0.7s ease" }}
         >
           {/* Breadcrumbs */}
           <nav className="flex items-center justify-center gap-2 text-sm text-white/70 mb-6">
@@ -60,7 +69,7 @@ export default function PageHeader({ title, subtitle, breadcrumbs }: PageHeaderP
 
           {/* Decorative line */}
           <div className="w-20 h-1 bg-gradient-to-r from-[#f0a500] to-[#ffc107] mx-auto mt-6 rounded-full" />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

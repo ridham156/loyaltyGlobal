@@ -1,24 +1,28 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import { BEST_SELLING_PRODUCTS } from "@/data/constants";
 
 export default function BestSellingProducts() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { rootMargin: "-50px" });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section ref={ref} className="py-20 lg:py-28 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+        <div
+          style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: "all 0.7s ease" }}
           className="text-center mb-12"
         >
           <span className="inline-block text-[#f0a500] font-semibold text-sm uppercase tracking-wider mb-4">
@@ -30,16 +34,14 @@ export default function BestSellingProducts() {
           <p className="text-gray-600 max-w-2xl mx-auto mt-6">
             Discover our most sought-after products, trusted by importers and businesses worldwide.
           </p>
-        </motion.div>
+        </div>
 
         {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {BEST_SELLING_PRODUCTS.map((product, index) => (
-            <motion.div
+            <div
               key={product.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
+              style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: "all 0.7s ease", transitionDelay: `${index * 100}ms` }}
             >
               <Link href="/products" className="block group">
                 <div className="relative h-[200px] md:h-[240px] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
@@ -82,22 +84,20 @@ export default function BestSellingProducts() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* View All Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
+        <div
+          style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: "all 0.7s ease", transitionDelay: "400ms" }}
           className="text-center mt-12"
         >
           <Link href="/products" className="btn-primary">
             Explore All Products
             <ArrowRight className="w-5 h-5" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -17,26 +17,25 @@ export const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Products", href: "/products" },
-  { name: "Certificate", href: "/certificate" },
   { name: "Brochure", href: "/brochure" },
   { name: "Contact Us", href: "/contact" },
 ];
 
 export const HERO_SLIDES = [
   {
-    image: "/assets/images/spices.png",
+    image: "/assets/images/spices.jpg",
     title: "Premium Indian Spices",
     subtitle: "Exporting Authentic Flavors Worldwide",
     description: "Sourced from India’s finest farms, our spices offer rich aroma, vibrant color, and authentic flavor worldwide.",
   },
   {
-    image: "/assets/images/dry products.png",
+    image: "/assets/images/dry products.jpg",
     title: "Nutritious Pulses & Grains",
     subtitle: "Quality You Can Trust",
     description: "High-quality pulses and grains sourced from trusted Indian farms, ensuring purity, nutrition, and consistent supply worldwide.",
   },
   {
-    image: "/assets/images/vegetables.png",
+    image: "/assets/images/vegetables.jpg",
     title: "Fruits & Vegetables",
     subtitle: "Fueling Global Nutrition",
     description: "High-quality fruits and vegetables, processed hygienically and in compliance with international standards.",
@@ -73,7 +72,7 @@ export const PRODUCT_CATEGORIES = [
   {
     id: "spices",
     name: "Spices & Seasonings",
-    image: "/assets/images/spices.png",
+    image: "/assets/images/spices.jpg",
     description: "Sourced from India’s finest farms, our spices offer rich aroma, vibrant color, and authentic flavor worldwide.",
     products: [
       { name: "Turmeric Powder", image: "/assets/images1/AdobeStock_324300514_Preview.jpeg" },
@@ -92,7 +91,7 @@ export const PRODUCT_CATEGORIES = [
   {
     id: "oils",
     name: "Pulses & Grains",
-    image: "/assets/images2/Pulses & Grains.png",
+    image: "/assets/images2/Pulses & Grains.jpg",
     description: "High-quality pulses and grains sourced from trusted Indian farms, ensuring purity, nutrition, and consistent supply worldwide.",
     products: [
       { name: "Black Sesame", image: "/assets/images2/Black Sesame.avif" },
@@ -108,7 +107,7 @@ export const PRODUCT_CATEGORIES = [
   {
     id: "pulses",
     name: "Fruits & Vegetables",
-    image: "/assets/images3/vegetables.png",
+    image: "/assets/images3/vegetables.jpg",
     description: "High-quality fruits and vegetables, processed hygienically and in compliance with international standards.",
     products: [
       { name: "Onion", image: "/assets/images3/Onion.jpg" },

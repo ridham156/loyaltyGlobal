@@ -248,3 +248,9 @@ html, body {
 .animate-progress {
   animation: progress 8s linear forwards;
 }
+
+/* Generic fade-in-up for page elements */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

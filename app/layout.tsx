@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "Loyalty Global",
     images: [
       {
-        url: "https://loyaltyglobal.co.in/assets/images/spices.png",
+        url: "https://loyaltyglobal.co.in/assets/images/spices.jpg",
         width: 1200,
         height: 630,
         alt: "Loyalty Global — Premium Agricultural Exports from India",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: "Loyalty Global — Premium Agricultural Exports from India",
     description:
       "India's trusted agricultural exporter. Premium spices, pulses, oils & dehydrated vegetables shipped to 50+ countries.",
-    images: ["https://loyaltyglobal.co.in/assets/images/spices.png"],
+    images: ["https://loyaltyglobal.co.in/assets/images/spices.jpg"],
     site: "@loyaltyglobal",
     creator: "@loyaltyglobal",
   },

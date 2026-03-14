@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { motion, useInView } from "framer-motion";
 import { Send, CheckCircle, Clock, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { SITE_CONFIG, PRODUCT_CATEGORIES } from "@/data/constants";
@@ -42,8 +41,16 @@ export default function QuotePage() {
     message: "",
   });
 
-  const formRef = useRef(null);
-  const isInView = useInView(formRef, { once: true, margin: "-50px" });
+  const formRef = useRef<HTMLElement>(null);
+  const [formVisible, setFormVisible] = useState(false);
+
+  useEffect(() => {
+    const el = formRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setFormVisible(true); obs.disconnect(); } }, { rootMargin: "-50px" });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,11 +99,9 @@ export default function QuotePage() {
 
         {/* Success State */}
         {formStatus === "success" ? (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="max-w-2xl mx-auto"
+            style={{ animation: "fadeInUp 0.5s ease both" }}
           >
             <div className="bg-white rounded-2xl shadow-lg p-8 sm:p-14 text-center">
               <div className="relative w-24 h-24 mx-auto mb-8">
@@ -156,27 +161,23 @@ export default function QuotePage() {
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </div>
         ) : (
           <div className="max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
+            <div
               className="text-center mb-8"
+              style={{ opacity: formVisible ? 1 : 0, transform: formVisible ? "none" : "translateY(15px)", transition: "all 0.5s ease" }}
             >
               <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">Request a Quotation</h1>
               <p className="text-gray-600 text-sm sm:text-base max-w-xl mx-auto">
                 Fill in the details below and we&apos;ll send you a competitive quotation within 24 hours.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.form
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 }}
+            <form
               onSubmit={handleSubmit}
               className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              style={{ opacity: formVisible ? 1 : 0, transform: formVisible ? "none" : "translateY(20px)", transition: "all 0.6s ease 0.1s" }}
             >
               {/* Your Details */}
               <div className="p-6 sm:p-8">
@@ -297,7 +298,7 @@ export default function QuotePage() {
                   We respect your privacy. Your information will only be used to process this quotation.
                 </p>
               </div>
-            </motion.form>
+            </form>
           </div>
         )}
 
