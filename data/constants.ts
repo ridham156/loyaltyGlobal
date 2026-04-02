@@ -3,7 +3,7 @@ export const SITE_CONFIG = {
   tagline: "Your Trusted Partner in Global Agricultural Exports",
   phone: "+91 6353342367",
   email: "info@loyaltyglobal.co.in",
-  address: "Satyesh Residency, Sarkhej - Sanand Rd, Shela, Ahmedabad, Gujarat 382210, India",
+  address: "Satyesh, Sarkhej - Sanand Rd, Shela, Ahmedabad, Gujarat 382210, India",
   socialLinks: {
     facebook: "https://www.facebook.com/profile.php?id=61586603233342",
     twitter: "https://twitter.com/loyaltyglobal",
