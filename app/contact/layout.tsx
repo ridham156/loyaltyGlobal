@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Contact Loyalty Global for export inquiries, business partnerships, or product information. Reach our team in Ahmedabad, Gujarat, India. Email, phone, or send us a message.",
   keywords:
-    "contact Loyalty Global, Loyalty Global email, Loyalty Global phone, agricultural export inquiry India, Loyalty Global Ahmedabad contact",
+    "contact Loyalty Global, Loyalty Global email, Loyalty Global phone number, agricultural export inquiry India, Loyalty Global Ahmedabad contact, food export company India contact, buy Indian spices wholesale contact, import agricultural products India",
   alternates: {
     canonical: "https://loyaltyglobal.co.in/contact",
   },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/images/spices.png",
+        url: "https://loyaltyglobal.co.in/assets/images/spices.jpg",
         width: 1200,
         height: 630,
         alt: "Contact Loyalty Global",

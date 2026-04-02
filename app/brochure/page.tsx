@@ -1,23 +1,30 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
 import { Download, FileText, BookOpen, Presentation, Mail } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import { PRODUCT_CATEGORIES } from "@/data/constants";
 
 const brochures = [
-  { title: "Company Profile", description: "Complete overview of Loyalty Global, our capabilities, and services", icon: BookOpen, size: "2.5 MB", format: "PDF", image: "/assets/images/spices.png" },
-  { title: "Product Catalog", description: "Comprehensive catalog of all our agricultural products with specifications", icon: FileText, size: "5.2 MB", format: "PDF", image: "/assets/images/oils.png" },
-  { title: "Export Guidelines", description: "Documentation requirements and export process information", icon: Presentation, size: "1.8 MB", format: "PDF", image: "/assets/images/dry products.png" },
-  { title: "Quality Standards", description: "Our quality control processes and certification details", icon: FileText, size: "1.2 MB", format: "PDF", image: "/assets/images/vegetables.png" },
+  { title: "Company Profile", description: "Complete overview of Loyalty Global, our capabilities, and services", icon: BookOpen, size: "2.5 MB", format: "PDF", image: "/assets/images/spices.jpg" },
+  { title: "Product Catalog", description: "Comprehensive catalog of all our agricultural products with specifications", icon: FileText, size: "5.2 MB", format: "PDF", image: "/assets/images/about.jpg" },
+  { title: "Export Guidelines", description: "Documentation requirements and export process information", icon: Presentation, size: "1.8 MB", format: "PDF", image: "/assets/images/dary.jpg" },
+  { title: "Quality Standards", description: "Our quality control processes and certification details", icon: FileText, size: "1.2 MB", format: "PDF", image: "/assets/images/vegetables.jpg" },
 ];
 
 export default function BrochurePage() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { rootMargin: "-100px" });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <>
@@ -30,18 +37,25 @@ export default function BrochurePage() {
       {/* Downloads Section */}
       <section ref={ref} className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-12">
+          <div
+            className="text-center mb-12"
+            style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: "all 0.6s ease" }}
+          >
             <span className="inline-block text-[#f0a500] font-semibold text-sm uppercase tracking-wider mb-4">Resources</span>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 section-title">Download Our Brochures</h2>
             <p className="text-gray-600 max-w-2xl mx-auto mt-6">Get detailed information about our products, services, and company profile.</p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {brochures.map((brochure, index) => (
-              <motion.div key={brochure.title} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+              <div
+                key={brochure.title}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+                style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(30px)", transition: `all 0.5s ease ${index * 0.1}s` }}
+              >
                 <div className="flex flex-col sm:flex-row">
                   <div className="relative w-full sm:w-48 h-48 sm:h-auto flex-shrink-0">
-                    <Image src={brochure.image} alt={brochure.title} fill className="object-cover" />
+                    <Image src={brochure.image} alt={brochure.title} fill sizes="192px" className="object-cover" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/50 sm:from-transparent sm:to-white" />
                   </div>
                   <div className="p-6 flex-1">
@@ -65,7 +79,7 @@ export default function BrochurePage() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -74,16 +88,20 @@ export default function BrochurePage() {
       {/* Product Category Sheets */}
       <section className="py-20 bg-[#f8fafc]">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
+          <div className="text-center mb-12" style={{ animation: "fadeInUp 0.6s ease both" }}>
             <span className="inline-block text-[#f0a500] font-semibold text-sm uppercase tracking-wider mb-4">Product Information</span>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 section-title">Category Datasheets</h2>
-          </motion.div>
+          </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {PRODUCT_CATEGORIES.map((category, index) => (
-              <motion.div key={category.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group">
+              <div
+                key={category.id}
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group"
+                style={{ animation: `fadeInUp 0.5s ease ${index * 0.1}s both` }}
+              >
                 <div className="relative h-40">
-                  <Image src={category.image} alt={category.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src={category.image} alt={category.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 to-transparent" />
                   <div className="absolute bottom-4 left-4">
                     <h3 className="text-white font-bold">{category.name}</h3>
@@ -96,7 +114,7 @@ export default function BrochurePage() {
                     Download Sheet
                   </button>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -106,12 +124,12 @@ export default function BrochurePage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#0f4c75] to-[#0a3654] rounded-3xl p-8 lg:p-12 text-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <div style={{ animation: "fadeInUp 0.6s ease both" }}>
               <Mail className="w-16 h-16 text-[#f0a500] mx-auto mb-6" />
               <h2 className="text-3xl font-bold text-white mb-4">Need Custom Information?</h2>
               <p className="text-white/80 max-w-2xl mx-auto mb-8">We can prepare customized product specifications, pricing sheets, and documentation based on your specific requirements.</p>
               <Link href="/contact" className="inline-flex items-center gap-2 bg-[#f0a500] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#d4920a] transition-all duration-300">Contact Us</Link>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

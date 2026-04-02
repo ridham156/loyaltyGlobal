@@ -228,3 +228,29 @@ html, body {
 .animate-pulse-slow {
   animation: pulse-slow 2.5s ease-in-out infinite;
 }
+
+/* Hero carousel — text fade-in on slide change */
+@keyframes hero-fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-hero-fade {
+  animation: hero-fade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Hero progress bar */
+@keyframes progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.animate-progress {
+  animation: progress 8s linear forwards;
+}
+
+/* Generic fade-in-up for page elements */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

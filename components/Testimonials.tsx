@@ -1,22 +1,39 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import { Quote, Star } from "lucide-react";
 import { TESTIMONIALS } from "@/data/constants";
 
 export default function Testimonials() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
+      { rootMargin: "-50px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section ref={ref} className="py-20 lg:py-28 bg-[#f8fafc] overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+        <div
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "none" : "translateY(20px)",
+            transition: "all 0.7s ease",
+          }}
           className="text-center mb-12"
         >
           <span className="inline-block text-[#f0a500] font-semibold text-sm uppercase tracking-wider mb-4">
@@ -28,16 +45,19 @@ export default function Testimonials() {
           <p className="text-gray-600 max-w-2xl mx-auto mt-6">
             Trusted by businesses worldwide for quality and reliability.
           </p>
-        </motion.div>
+        </div>
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {TESTIMONIALS.map((testimonial, index) => (
-            <motion.div
+            <div
               key={testimonial.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? "none" : "translateY(20px)",
+                transition: "all 0.7s ease",
+                transitionDelay: `${index * 100}ms`,
+              }}
               className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative group"
             >
               {/* Quote Icon */}
@@ -67,7 +87,7 @@ export default function Testimonials() {
                   <p className="text-sm text-gray-500">{testimonial.company}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

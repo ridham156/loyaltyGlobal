@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 import { MapPin, Phone, Mail, Send, CheckCircle, MessageSquare } from "lucide-react";
 import { SITE_CONFIG } from "@/data/constants";
 import CountrySelect from "@/components/CountrySelect";
@@ -9,13 +8,21 @@ import CountrySelect from "@/components/CountrySelect";
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", country: "", subject: "", message: "" });
-  const formRef = useRef(null);
-  const isInView = useInView(formRef, { once: true, margin: "-100px" });
+  const formRef = useRef<HTMLElement>(null);
+  const [formVisible, setFormVisible] = useState(false);
+
+  useEffect(() => {
+    const el = formRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setFormVisible(true); obs.disconnect(); } }, { rootMargin: "-100px" });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("submitting");
-    
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -55,13 +62,17 @@ export default function ContactPage() {
           <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8 text-center">Contact Us</h1>
           <div className="grid sm:grid-cols-3 gap-6">
             {contactInfo.map((info, index) => (
-              <motion.div key={info.title} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-[#f8fafc] rounded-2xl p-6 text-center hover:bg-[#0f4c75] group transition-all duration-300">
+              <div
+                key={info.title}
+                className="bg-[#f8fafc] rounded-2xl p-6 text-center hover:bg-[#0f4c75] group transition-all duration-300"
+                style={{ animation: `fadeInUp 0.5s ease ${index * 0.1}s both` }}
+              >
                 <div className="w-14 h-14 bg-[#0f4c75] group-hover:bg-white rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                   <info.icon className="w-7 h-7 text-white group-hover:text-[#0f4c75] transition-colors" />
                 </div>
                 <h3 className="font-bold text-gray-900 group-hover:text-white mb-2 transition-colors">{info.title}</h3>
                 {info.lines.map((line, i) => (<p key={i} className="text-sm text-gray-600 group-hover:text-white/80 transition-colors">{line}</p>))}
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -72,7 +83,10 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}
-            <motion.div initial={{ opacity: 0, x: -50 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6 }} className="bg-white rounded-2xl p-8 shadow-lg">
+            <div
+              className="bg-white rounded-2xl p-8 shadow-lg"
+              style={{ opacity: formVisible ? 1 : 0, transform: formVisible ? "none" : "translateX(-50px)", transition: "all 0.6s ease" }}
+            >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-[#0f4c75]/10 rounded-xl flex items-center justify-center">
                   <MessageSquare className="w-6 h-6 text-[#0f4c75]" />
@@ -84,14 +98,14 @@ export default function ContactPage() {
               </div>
 
               {formStatus === "success" ? (
-                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-12">
+                <div className="text-center py-12" style={{ animation: "fadeInUp 0.4s ease both" }}>
                   <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle className="w-10 h-10 text-green-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Message Sent!</h3>
                   <p className="text-gray-600 mb-6">Thank you for reaching out. We&apos;ll get back to you soon.</p>
                   <button onClick={() => setFormStatus("idle")} className="text-[#0f4c75] font-medium hover:underline">Send another message</button>
-                </motion.div>
+                </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
@@ -145,10 +159,13 @@ export default function ContactPage() {
                   </button>
                 </form>
               )}
-            </motion.div>
+            </div>
 
             {/* Info Side */}
-            <motion.div initial={{ opacity: 0, x: 50 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }} className="space-y-8">
+            <div
+              className="space-y-8"
+              style={{ opacity: formVisible ? 1 : 0, transform: formVisible ? "none" : "translateX(50px)", transition: "all 0.6s ease 0.2s" }}
+            >
               {/* Map */}
               <div className="bg-[#0f4c75] rounded-2xl overflow-hidden text-white">
                 {/* Live Google Map — Sanand Chokdi, Ahmedabad */}
@@ -208,7 +225,7 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

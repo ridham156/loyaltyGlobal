@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/images/spices.png",
+        url: "https://loyaltyglobal.co.in/assets/images/spices.jpg",
         width: 1200,
         height: 630,
         alt: "Loyalty Global Brochure and Catalog",

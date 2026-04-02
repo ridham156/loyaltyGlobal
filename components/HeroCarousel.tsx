@@ -3,27 +3,39 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { HERO_SLIDES } from "@/data/constants";
+
+const HERO_BLUR: Record<string, string> = {
+  "/assets/images/spices.jpg": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+AjIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCAAGAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCu8z8gnNNEzYHJ/OiioND/2Q==",
+  "/assets/images/dry products.jpg": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+AjIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCAAGAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBrzZfD8t0wOlVjOwONz8e9FFQi2f/Z",
+  "/assets/images/vegetables.jpg": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+AjIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCAAGAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwB0k0rLsZtw6YqmYsnqfzoorMpn/9k=",
+  "/assets/images/dary.jpg": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+AjIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCAAKAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC+87bmCq2AfzqQHIob74pKEB//2Q==",
+};
 
 export default function HeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [direction, setDirection] = useState(1);
+  const [prevSlide, setPrevSlide] = useState<number | null>(null);
 
   const nextSlide = useCallback(() => {
-    setDirection(1);
-    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    setCurrentSlide((prev) => {
+      setPrevSlide(prev);
+      return (prev + 1) % HERO_SLIDES.length;
+    });
   }, []);
 
-  const prevSlide = () => {
-    setDirection(-1);
-    setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  const goToPrev = () => {
+    setCurrentSlide((prev) => {
+      setPrevSlide(prev);
+      return (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length;
+    });
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 15000);
   };
 
   const goToSlide = (index: number) => {
-    setDirection(index > currentSlide ? 1 : -1);
+    setPrevSlide(currentSlide);
     setCurrentSlide(index);
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 15000);
@@ -35,148 +47,87 @@ export default function HeroCarousel() {
     return () => clearInterval(interval);
   }, [isAutoPlaying, nextSlide]);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? "0%" : "-0%",
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction > 0 ? "-0%" : "0%",
-      opacity: 0,
-    }),
-  };
-
   return (
     <section className="relative h-[600px] md:h-[700px] lg:h-[85vh] overflow-hidden">
-      {/* Slides */}
-      <AnimatePresence initial={false} custom={direction} mode="sync">
-        <motion.div
-          key={currentSlide}
-          custom={direction}
-          variants={slideVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-  x: {
-    type: "tween",
-    duration: 2,
-    ease: [0.25, 0.46, 0.45, 0.94],
-  },
-  opacity: {
-    duration: 1.6,
-  },
-}}
-
-          className="absolute inset-0"
+      {/* Slides — pure CSS crossfade, no framer-motion */}
+      {HERO_SLIDES.map((slide, index) => (
+        <div
+          key={slide.image}
+          className="absolute inset-0 transition-opacity duration-1000"
+          style={{ opacity: index === currentSlide ? 1 : 0, zIndex: index === currentSlide ? 1 : 0 }}
         >
-          {/* Subtle Ken Burns zoom - reduced from 1.08 to 1.03 */}
-          <motion.div
-            className="absolute inset-0"
-            initial={{ scale: 1 }}
-            animate={{ scale: 1.03 }}
-            transition={{ duration: 14, ease: "linear" }}
-          >
-            <Image
-              src={HERO_SLIDES[currentSlide].image}
-              alt={HERO_SLIDES[currentSlide].title}
-              fill
-              sizes="100vw"
-              className="object-cover"
-              priority={currentSlide === 0}
-              quality={85}
-            />
-          </motion.div>
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority={index === 0}
+            quality={80}
+            loading={index === 0 ? "eager" : "lazy"}
+            placeholder="blur"
+            blurDataURL={HERO_BLUR[slide.image] || undefined}
+          />
           {/* Overlay */}
           <div className="absolute inset-0 hero-overlay" />
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      ))}
 
       {/* Bottom bleed */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t   z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t z-[15] pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 h-full container mx-auto px-4 flex items-center">
+      <div className="relative z-10 h-full container mx-auto px-4 flex items-center" style={{ zIndex: 2 }}>
         <div className="max-w-3xl">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            >
-              {/* <motion.span
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="inline-block bg-[#f0a500] text-white text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full mb-4"
+          <div
+            key={currentSlide}
+            className="animate-hero-fade"
+          >
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+              {HERO_SLIDES[currentSlide].title}
+            </h1>
+            <p className="text-sm sm:text-base md:text-xl text-white/85 mb-6 sm:mb-8 max-w-2xl leading-relaxed">
+              {HERO_SLIDES[currentSlide].description}
+            </p>
+            <div className="flex flex-wrap gap-3 sm:gap-4">
+              <Link
+                href="/products"
+                className="bg-[#f0a500] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-[#d4920a] hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 group shadow-lg"
               >
-                {HERO_SLIDES[currentSlide].subtitle}
-              </motion.span> */}
-              <motion.h1
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight"
+                Explore Products
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
+              <Link
+                href="/quote"
+                className="bg-white/10 backdrop-blur-sm text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base border border-white/35 hover:bg-white hover:text-[#0f4c75] hover:-translate-y-0.5 transition-all duration-300"
               >
-                {HERO_SLIDES[currentSlide].title}
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-sm sm:text-base md:text-xl text-white/85 mb-6 sm:mb-8 max-w-2xl leading-relaxed"
-              >
-                {HERO_SLIDES[currentSlide].description}
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="flex flex-wrap gap-3 sm:gap-4"
-              >
-                <Link
-                  href="/products"
-                  className="bg-[#f0a500] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-[#d4920a] hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 group shadow-lg"
-                >
-                  Explore Products
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-                <Link
-                  href="/quote"
-                  className="bg-white/10 backdrop-blur-sm text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base border border-white/35 hover:bg-white hover:text-[#0f4c75] hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  Get Quotation
-                </Link>
-              </motion.div>
-            </motion.div>
-          </AnimatePresence>
+                Get Quotation
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Navigation Arrows */}
       <button
-        onClick={prevSlide}
+        onClick={goToPrev}
         className="absolute left-4 md:left-8 top-5/6 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white border border-white/20 hover:bg-white hover:text-[#0f4c75] hover:border-white transition-all duration-300 z-20"
+        style={{ zIndex: 20 }}
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
-        onClick={nextSlide}
+        onClick={() => { setPrevSlide(currentSlide); nextSlide(); setIsAutoPlaying(false); setTimeout(() => setIsAutoPlaying(true), 15000); }}
         className="absolute right-4 md:right-8 top-5/6 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white border border-white/20 hover:bg-white hover:text-[#0f4c75] hover:border-white transition-all duration-300 z-20"
+        style={{ zIndex: 20 }}
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
 
       {/* Dots */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-20">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2.5" style={{ zIndex: 20 }}>
         {HERO_SLIDES.map((_, index) => (
           <button
             key={index}
@@ -191,14 +142,11 @@ export default function HeroCarousel() {
         ))}
       </div>
 
-      {/* Progress bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-0.5  z-20">
-        <motion.div
+      {/* Progress bar — CSS animation only */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ zIndex: 20 }}>
+        <div
           key={currentSlide}
-          initial={{ width: "0%" }}
-          animate={{ width: "100%" }}
-          transition={{ duration: 8, ease: "linear" }}
-          className="h-full bg-[#f0a500]/50"
+          className="h-full bg-[#f0a500]/50 animate-progress"
         />
       </div>
     </section>

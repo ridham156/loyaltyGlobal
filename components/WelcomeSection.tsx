@@ -2,73 +2,54 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { useRef, useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { WELCOME_CONTENT } from "@/data/constants";
 
 export default function WelcomeSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
 
-  const features = [
-    "FSSAI, ISO & HACCP Certified",
-    "Direct Farm Sourcing",
-    "Global Shipping Network",
-    "Competitive Pricing",
-  ];
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { rootMargin: "-100px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section ref={ref} className="py-20 lg:py-28 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="relative"
+          <div
+            className="relative transition-all duration-700"
+            style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateX(-40px)" }}
           >
             <div className="relative h-[400px] lg:h-[550px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/assets/images/about.png"
-                alt="Premium Indian Agricultural Products"
+                src="/assets/images/about.jpg"
+                alt="Premium Indian Agricultural Products — Loyalty Global"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+AjIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCAAHAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC+hnEeCY2bs3I/SqxF3k/v1H0QUUVQj//Z"
               />
-              {/* Overlay pattern */}
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0f4c75]/30 to-transparent" />
             </div>
-            {/* Floating card */}
-            {/* <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute -bottom-8 -right-4 lg:-right-8 bg-white rounded-xl shadow-2xl border border-gray-100 p-6 max-w-[240px]"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#0f4c75] to-[#1b6ca8] rounded-full flex items-center justify-center">
-                  <span className="text-white text-2xl font-bold">10+</span>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-[#0f4c75]">Years</p>
-                  <p className="text-sm text-gray-500">of Excellence</p>
-                </div>
-              </div>
-              <p className="text-sm text-gray-600">
-                Trusted by 500+ clients across 50+ countries
-              </p>
-            </motion.div> */}
-            {/* Decorative element */}
             <div className="absolute -z-10 -top-4 -left-4 w-full h-full border-2 border-[#f0a500] rounded-2xl" />
-          </motion.div>
+          </div>
 
           {/* Content Side */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <div
+            className="transition-all duration-700 delay-200"
+            style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateX(40px)" }}
           >
             <span className="inline-block text-[#f0a500] font-semibold text-sm uppercase tracking-wider mb-4">
               About Loyalty Global
@@ -84,33 +65,11 @@ export default function WelcomeSection() {
                 <p key={idx}>{para}</p>
               ))}
             </div>
-
-            {/* Features */}
-            {/* <div className="grid grid-cols-2 gap-4 mb-8">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                  className="flex items-center gap-2"
-                >
-                  <div className="w-5 h-5 bg-[#0f4c75]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-[#0f4c75]" />
-                  </div>
-                  <span className="text-sm font-medium text-gray-700">{feature}</span>
-                </motion.div>
-              ))}
-            </div> */}
-
-            <Link
-              href="/about"
-              className="btn-primary inline-flex"
-            >
+            <Link href="/about" className="btn-primary inline-flex">
               READ MORE
               <ArrowRight className="w-5 h-5" />
             </Link>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
